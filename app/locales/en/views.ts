@@ -294,6 +294,7 @@ export default {
             forgotPassword: 'Forgot your password?',
             dontHaveAccount: "Don't have account?",
             description: 'Get started with LMS AI Inc. Learn fast and smart.!',
+            success: 'Login successful!',
             form: {
                 email: 'Email',
                 password: 'Password',
@@ -352,6 +353,11 @@ export default {
             requestNewLink: 'Request a new link',
             backToLogin: 'Back to login',
             errorTitle: 'An error occurred',
+        },
+        SignUpSuccessPage: {
+            title: 'Thank you for signing up!',
+            description: 'Check your email to confirm',
+            message: "You've successfully signed up. Please check your email to confirm your account before signing in.",
         }
     },
     waitingRoom: {

@@ -6,7 +6,6 @@ import Link from 'next/link'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
-import { forgotPasswordFun } from '@/actions/auth/authActions'
 import { useI18n } from '@/app/locales/client'
 import { Button } from '@/components/ui/button'
 import {
@@ -19,6 +18,7 @@ import {
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { useToast } from '@/components/ui/use-toast'
+import { createClient } from '@/utils/supabase/client'
 
 const FormSchema = z.object({
     email: z.string().email({ message: 'Invalid email address' }),
@@ -44,27 +44,23 @@ export default function ForgotPassword({
     const { toast } = useToast()
 
     const submit = async (data: z.infer<typeof FormSchema>) => {
+        const supabase = createClient()
+        const { email } = data
+
         try {
-            const res = await forgotPasswordFun({
-                email: data.email,
+            // The url which will be included in the email. This URL needs to be configured in your redirect URLs in the Supabase dashboard at https://supabase.com/dashboard/project/_/auth/url-configuration
+            const { error } = await supabase.auth.resetPasswordForEmail(email, {
+                redirectTo: `${window.location.origin}/auth/reset-password`,
             })
-
-            if (res.status === 'error') {
-                return toast({
-                    title: 'Error',
-                    description: res.message || t('auth.forgotPassword.errors.generic_error'),
-                    variant: 'destructive',
-                })
-            }
-
+            if (error) throw error
             return toast({
                 title: 'Success',
-                description: res.message,
+                description: t('auth.forgotPassword.success'),
             })
-        } catch (error) {
+        } catch (error: unknown) {
             return toast({
                 title: 'Error',
-                description: error.message || t('auth.forgotPassword.errors.generic_error'),
+                description: t('auth.forgotPassword.errors.generic_error'),
                 variant: 'destructive',
             })
         }

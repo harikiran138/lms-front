@@ -1,5 +1,4 @@
 
-import { Message } from 'ai/react'
 import dayjs from 'dayjs'
 import { Check, Copy, Edit, Recycle, Trash } from 'lucide-react'
 
@@ -15,6 +14,8 @@ import {
     TooltipProvider,
     TooltipTrigger,
 } from '@/components/ui/tooltip'
+import { Message } from 'ai'
+import WebSearchResult from '@/components/chatbox/WebSearchResult'
 
 interface MessageItemProps {
     message: Message
@@ -68,19 +69,7 @@ const MessageItem: React.FC<MessageItemProps> = ({
                 </Avatar>
                 <div className="flex-1 w-full">
                     <div className="py-3 rounded-lg ">
-                        {isEditing ? (
-                            <Textarea
-                                value={editedContent}
-                                onChange={(e) =>
-                                    setEditedContent(e.target.value)
-                                }
-                                className="mb-2"
-                                rows={8}
-                            />
-                        ) : (
-                            <ViewMarkdown markdown={message.content} />
-                        )}
-                        {toolInvocations && toolInvocations}
+                        <MessageParts message={message} />
                         <div className="text-xs text-gray-500 mt-1 flex items-center flex-wrap gap-4 justify-between">
                             <span>
                                 {dayjs(message.createdAt).format(
@@ -98,11 +87,11 @@ const MessageItem: React.FC<MessageItemProps> = ({
                                                 disabled={isLoading}
                                             >
                                                 {message.id ===
-                                                'copiedMessageId' ? (
-                                                        <Check className="h-4 w-4" />
-                                                    ) : (
-                                                        <Copy className="h-4 w-4" />
-                                                    )}
+                                                    'copiedMessageId' ? (
+                                                    <Check className="h-4 w-4" />
+                                                ) : (
+                                                    <Copy className="h-4 w-4" />
+                                                )}
                                             </Button>
                                         </TooltipTrigger>
                                         <TooltipContent>
@@ -208,3 +197,88 @@ const ActionButton: React.FC<ActionButtonProps> = ({
         </Tooltip>
     </TooltipProvider>
 )
+
+const renderToolInvocation = ({
+    toolInvocation,
+    index,
+    message,
+}: {
+    toolInvocation: any
+    index: number
+    message: Message
+}) => {
+    if (!toolInvocation?.result) return null
+
+    switch (toolInvocation.toolName) {
+        case 'tavily_web_search':
+            return (
+            <div key={`${message.id}-tool-${index}`} className="mt-4">
+                <WebSearchResult
+                    key={
+                        `${toolInvocation.toolName}-${index}`
+                    }
+                    toolName={
+                        'tavily_web_search'
+                    }
+                    result={
+                        toolInvocation.result
+                    }
+                />
+            </div>
+            )
+        default:
+            return null
+    }
+}
+
+
+function MessageParts({
+    message,
+}: {
+    message: Message
+}) {
+    return (
+        <>
+            {message.parts.map((part, index) => {
+                switch (part.type) {
+                    case 'text':
+                        if (message.role === 'user') {
+                            return (
+                                <div key={`part-${index}`} className="text-sm  p-2 rounded-md my-2">
+                                    <span className="font-medium">{part.text}</span>
+                                </div>
+                            )
+                        }
+                        return <ViewMarkdown key={`part-${index}`} markdown={part.text} />
+                    case 'tool-invocation':
+                        return renderToolInvocation({
+                            toolInvocation: part.toolInvocation,
+                            index,
+                            message
+                        })
+                    case 'reasoning':
+                        return (
+                            <div
+                                key={`part-${index}`}
+                                className="text-sm bg-orange-100/10 p-2 rounded-md my-2 border border-orange-200/20"
+                            >
+                                <h4 className="font-medium text-orange-500 mb-1">Razonamiento:</h4>
+                                <ViewMarkdown markdown={part.reasoning} />
+                            </div>
+                        )
+                    case 'file':
+                        return (
+                            <img
+                                key={`part-${index}`}
+                                src={`data:${part.mimeType};base64,${part.data}`}
+                                alt="Imagen generada"
+                                className="rounded-md max-w-full mt-2"
+                            />
+                        )
+                    default:
+                        return null
+                }
+            })}
+        </>
+    )
+}

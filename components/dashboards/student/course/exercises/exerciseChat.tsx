@@ -1,6 +1,7 @@
 'use client'
 
-import { Message, useChat } from 'ai/react'
+import { useChat } from '@ai-sdk/react'
+import { Message } from 'ai'
 import { useRouter } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 import { toast } from 'sonner'

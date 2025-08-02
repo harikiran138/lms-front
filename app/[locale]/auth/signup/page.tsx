@@ -20,7 +20,7 @@ export default async function Login({
                         {t('auth.register.helpText')}
                     </p>
                 </div>
-                <UserSignupForm redirect="/dashboard" />
+                <UserSignupForm redirect="/auth/sign-up-success" />
                 {searchParams.message && (
                     <p className="text-center text-red-500 text-sm">
                         {searchParams.message}

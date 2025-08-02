@@ -1,4 +1,3 @@
-import { KnowMeChatAI } from '@/actions/dashboard/AI/KnowMeActions'
 import AIResponseDisplay from '@/components/dashboards/student/account/AIResponseDisplay'
 import KnowMeChat from '@/components/dashboards/student/account/KnowMeChat'
 import { LearningPreferencesForm } from '@/components/dashboards/student/account/LearningPreferenceForm'
@@ -23,21 +22,18 @@ export default async function KnowMePage() {
     }
 
     return (
-        <KnowMeChatAI initialAIState={{ chatId: '', messages: [] }}>
-            {
-                profile.data.data_person ? (
-                    <AIResponseDisplay
-                        // @ts-expect-error
-                        data={profile.data.data_person}
-                        hideSubmit
-                    />
-                ) : (
-                    <div>
-                        <LearningPreferencesForm />
-                        <KnowMeChat />
-                    </div>
-                )
-            }
-        </KnowMeChatAI>
+
+        profile.data.data_person ? (
+            <AIResponseDisplay
+                data={profile.data.data_person}
+                hideSubmit
+            />
+        ) : (
+            <div>
+                <LearningPreferencesForm />
+                <KnowMeChat />
+            </div>
+        )
+
     )
 }

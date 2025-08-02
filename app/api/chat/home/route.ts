@@ -9,7 +9,7 @@ export async function POST(req: Request) {
     const { messages } = await req.json()
 
     const result = streamText({
-        model: google('gemini-2.0-pro-exp-02-05'),
+        model: google('gemini-2.5-flash-preview-04-17'),
         messages,
         maxSteps: 3,
         toolCallStreaming: true,

@@ -8,7 +8,6 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
-import { resetPasswordFun } from '@/actions/auth/authActions'
 import { useI18n } from '@/app/locales/client'
 import { Button } from '@/components/ui/button'
 import {
@@ -21,6 +20,7 @@ import {
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { useToast } from '@/components/ui/use-toast'
+import { createClient } from '@/utils/supabase/client'
 
 export default function ResetPasswordForm({
     searchParams,
@@ -56,30 +56,21 @@ export default function ResetPasswordForm({
     const router = useRouter()
 
     const submit = async (data: z.infer<typeof FormSchema>) => {
+        const supabase = createClient()
+
         try {
-            const res = await resetPasswordFun({
-                password: data.password,
-                code: searchParams.code,
+            const { error } = await supabase.auth.updateUser({ password: data.password })
+            if (error) throw error
+            toast({
+                title: t('auth.resetPassword.success'),
+                description: t('auth.resetPassword.successDescription'),
             })
-
-            if (res.error) {
-                return toast({
-                    title: 'Error',
-                    description: res.error || t('auth.resetPassword.errors.generic'),
-                    variant: 'destructive',
-                })
-            }
-
-            router.push('/')
-
-            return toast({
-                title: 'Success',
-                description: res.message,
-            })
-        } catch (error: any) {
-            return toast({
+            // Update this route to redirect to an authenticated route. The user already has an active session.
+            router.push('/dashboard')
+        } catch (error: unknown) {
+            toast({
                 title: 'Error',
-                description: error.message || t('auth.resetPassword.errors.generic'),
+                description: error instanceof Error ? error.message : 'An error occurred',
                 variant: 'destructive',
             })
         }

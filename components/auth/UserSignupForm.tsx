@@ -2,12 +2,12 @@
 
 import { zodResolver } from '@hookform/resolvers/zod'
 import { EyeIcon, EyeOffIcon, Link } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 import { z } from 'zod'
 
-import { signUp } from '@/actions/auth/authActions'
 import { useI18n } from '@/app/locales/client'
 import { Button } from '@/components/ui/button'
 import {
@@ -19,6 +19,7 @@ import {
     FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
+import { createClient } from '@/utils/supabase/client'
 
 export default function UserSignupForm({ redirect }: { redirect?: string }) {
     const t = useI18n()
@@ -51,34 +52,35 @@ export default function UserSignupForm({ redirect }: { redirect?: string }) {
             password: '',
         },
     })
+    const router = useRouter()
 
     const [showPassword, setShowPassword] = useState(false)
     const [error, setError] = useState('')
 
     const onSubmit = async (data: z.infer<typeof FormSchema>) => {
+        const supabase = createClient()
         try {
             setError('')
-            // Assuming signUp function returns a promise
-            const response = await signUp({
+            const { error } = await supabase.auth.signUp({
                 email: data.email,
-                full_name: data.full_name,
-                username: data.username,
                 password: data.password,
+                options: {
+                    data: {
+                        full_name: data.full_name,
+                        username: data.username,
+                    },
+                    // emailRedirectTo: `${window.location.origin}/protected`,
+                }
             })
-
-            if (response.error) {
-                // Handle signup errors (e.g., display error messages)
-                setError(
-                    response.message || 'An error occurred. Please try again.'
-                )
-                toast.error(
-                    response.message || 'An error occurred. Please try again.'
-                )
-                return
-            }
+            if (error) throw error
 
             // Handle successful signup (e.g., redirect, show success message)
-            toast.success('Check your email to continue the sign-in process.')
+            toast.success(t('auth.register.success') || 'Signup successful! Please check your email to confirm your account.')
+            if (redirect) {
+                router.push(redirect)
+            } else {
+                router.push('/')
+            }
         } catch (error: any) {
             // Handle signup errors (e.g., display error messages)
             setError(t('auth.register.errors.generic_error') || 'An error occurred. Please try again.')

@@ -13,28 +13,6 @@ import { cn } from '@/utils'
 
 import ChatLoadingSkeleton from '../../chat/ChatLoadingSkeleton'
 
-const ToolInvocationMessage = ({
-    toolInvocations,
-}: {
-    toolInvocations?: ToolInvocation[]
-}) => {
-    return (
-        <>
-            {toolInvocations?.map(
-                (toolInvocation: ToolInvocation) =>
-                    'result' in toolInvocation &&
-                    toolInvocation.toolName ===
-                        'makeUserAssigmentCompleted' && (
-                        <SuccessMessage
-                            key={toolInvocation.toolCallId}
-                            status={toolInvocation.result.status}
-                            message={toolInvocation.result.message}
-                        />
-                    )
-            )}
-        </>
-    )
-}
 
 const Message = ({
     message,
@@ -80,13 +58,6 @@ const Message = ({
                     </div>
                     {!toolInvocations && <ViewMarkdown markdown={message} />}
                     {!toolInvocations && children}
-                    <ToolInvocationMessage toolInvocations={toolInvocations} />
-                    {/* {isUser && (
-                        <div className="flex mt-2 space-x-2 ">
-                            <Pen className="cursor-pointer" />
-                            <Copy className="cursor-pointer" />
-                        </div>
-                    )} */}
                 </div>
             </div>
         </div>
@@ -147,17 +118,56 @@ const ChatWindow = ({
                     return null
                 }
                 if (index === 0) return null
-                return (
-                    <Message
-                        key={index}
-                        message={msg.content}
-                        sender={msg.role}
-                        time={msg?.createdAt?.toDateString()}
-                        isUser={msg.role === 'user'}
-                        toolInvocations={msg.toolInvocations}
-                    />
+
+                return msg.parts.map((part, partIndex) => {
+                    const isUser = msg.role === 'user'
+                    const time = msg.createdAt
+                        ? new Date(msg.createdAt).toLocaleTimeString([], {
+                            hour: '2-digit',
+                            minute: '2-digit',
+                        })
+                        : undefined
+
+                    switch (part.type) {
+                        case 'text':
+                            if (msg.role === 'user') {
+                                return (
+                                    <div key={`part-${index}`} className="text-sm  p-2 rounded-md my-2">
+                                        <span className="font-medium">{part.text}</span>
+                                    </div>
+                                )
+                            }
+                            return <ViewMarkdown key={`part-${index}`} markdown={part.text} />
+                        case 'tool-invocation':
+                            // if (!toolInvocation?.result) return null
+                            console.log('toolInvocation', part.toolInvocation)
+                            return null
+                        case 'reasoning':
+                            return (
+                                <div
+                                    key={`part-${index}`}
+                                    className="text-sm bg-orange-100/10 p-2 rounded-md my-2 border border-orange-200/20"
+                                >
+                                    <h4 className="font-medium text-orange-500 mb-1">Razonamiento:</h4>
+                                    <ViewMarkdown markdown={part.reasoning} />
+                                </div>
+                            )
+                        case 'file':
+                            return (
+                                <img
+                                    key={`part-${index}`}
+                                    src={`data:${part.mimeType};base64,${part.data}`}
+                                    alt="Imagen generada"
+                                    className="rounded-md max-w-full mt-2"
+                                />
+                            )
+                        default:
+                            return null
+                    }
+                }
                 )
             })}
+
             {isLoading && <ChatLoadingSkeleton />}
         </div>
     )

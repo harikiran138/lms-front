@@ -295,6 +295,7 @@ export default {
             forgotPassword: '¿Olvidaste tu contraseña?',
             dontHaveAccount: '¿No tienes cuenta?',
             description: 'Comienza tu aprendizaje con LMS AI.',
+            success: '¡Has iniciado sesión con éxito!',
             form: {
                 email: 'Correo',
                 password: 'Contraseña',
@@ -352,6 +353,11 @@ export default {
             requestNewLink: 'Solicitar nuevo enlace',
             backToLogin: 'Volver a iniciar sesion',
             errorTitle: 'Ha ocurrido un error',
+        },
+        SignUpSuccessPage: {
+            title: '¡Gracias por registrarte!',
+            description: 'Revisa tu correo para confirmar',
+            message: 'Te has registrado con éxito. Por favor, revisa tu correo para confirmar tu cuenta antes de iniciar sesión.',
         }
     },
     waitingRoom: {

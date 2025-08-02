@@ -95,6 +95,8 @@ export default async function ExerciseStudentPage({
         })),
     ]
 
+    console.log(initialMessages)
+
     return (
         <>
             <div className="md:container mx-auto space-y-4">

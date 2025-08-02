@@ -1,10 +1,7 @@
 'use client'
-import { generateId } from 'ai'
-import { useActions, useUIState } from 'ai/rsc'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
-import { AI } from '@/actions/dashboard/AI/ExamPreparationActions'
 import { Button } from '@/components/ui/button'
 import { Form } from '@/components/ui/form'
 import { FreeTextQuestion, MultipleChoiceQuestion as typeMultipleChoiceQuestion, SingleSelectQuestion as typeSingleSelectQuestion } from '@/utils/types'
@@ -20,18 +17,20 @@ export default function ExamPrepAiComponent ({
     freeTextQuestions,
     multipleChoiceQuestions,
     matchingTextQuestions,
-    hideSubmit
+    hideSubmit,
+    onSubmit: handleSubmit,
+    toolCallId
 }: {
     singleSelectQuestions: typeSingleSelectQuestion[]
     freeTextQuestions: FreeTextQuestion[]
     multipleChoiceQuestions: typeMultipleChoiceQuestion[]
     matchingTextQuestions?: MatchingTextQuestion[]
     hideSubmit?: boolean
+    onSubmit: (submission: Record<string, any>, toolCallId: string) => void
+    toolCallId: string
 }) {
     const form = useForm()
     const isLoading = form.formState.isSubmitting
-    const { continueConversation } = useActions()
-    const [_, setMessages] = useUIState<typeof AI>()
     const [isFinished, setIsFinished] = useState<boolean>(hideSubmit || false)
 
     async function onSubmit (data: any) {
@@ -95,8 +94,6 @@ export default function ExamPrepAiComponent ({
             }
         })
 
-        console.log(submission)
-
         const content = `The student answered the following questions:
 
     ${Object.values(submission)
@@ -127,21 +124,10 @@ export default function ExamPrepAiComponent ({
 
         [showExamResult, please call the function \`showExamResult\` with the user submission object as the argument.]
         `
-
-        console.log(content)
-
         try {
-            const { display } = await continueConversation(content)
-
-            setMessages((messages) => {
-                console.log('messages', messages)
-                return [...messages, {
-                    id: generateId(),
-                    display
-                }]
-            })
+            handleSubmit(submission, toolCallId)
             setIsFinished(true)
-            console.log(content)
+            form.reset()
         } catch (error) {
             console.error(error)
         }

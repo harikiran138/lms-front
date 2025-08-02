@@ -7,7 +7,6 @@ import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 import { z } from 'zod'
 
-import { signIn } from '@/actions/auth/authActions'
 import { useI18n } from '@/app/locales/client'
 import { Button } from '@/components/ui/button'
 import {
@@ -19,6 +18,7 @@ import {
     FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
+import { createClient } from '@/utils/supabase/client'
 
 export default function UserLoginForm({ redirect }: { redirect?: string }) {
     const t = useI18n()
@@ -50,14 +50,15 @@ export default function UserLoginForm({ redirect }: { redirect?: string }) {
     const [showPassword, setShowPassword] = useState(false)
 
     const onSubmit = async (data: z.infer<typeof FormSchema>) => {
+        const supabase = createClient()
         try {
             setError('')
-            // Assuming signIn function returns a promise
-            const response = await signIn({
+            const { error } = await supabase.auth.signInWithPassword({
                 email: data.email,
                 password: data.password,
-                redirectTo: redirect,
             })
+            if (error) throw error
+            toast.success(t('auth.login.success') || 'Login successful!')
         } catch (error: any) {
             // Handle login errors (e.g., display error messages)
             setError(t('auth.login.errors.passwordOrEmailIncorrect') || 'An error occurred. Please try again.')
