@@ -13,7 +13,6 @@ import { cn } from '@/utils'
 
 import ChatLoadingSkeleton from '../../chat/ChatLoadingSkeleton'
 
-
 const Message = ({
     message,
     sender,

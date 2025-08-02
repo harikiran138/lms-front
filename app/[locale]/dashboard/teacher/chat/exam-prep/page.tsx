@@ -6,7 +6,7 @@ export const maxDuration = 30
 export default async function ExamChatPage() {
     return (
         <>
-                <ExamPrepChat />
+            <ExamPrepChat />
         </>
     )
 }

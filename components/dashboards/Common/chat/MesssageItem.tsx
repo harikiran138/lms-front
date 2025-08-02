@@ -1,21 +1,20 @@
 
+import { Message } from 'ai'
 import dayjs from 'dayjs'
 import { Check, Copy, Edit, Recycle, Trash } from 'lucide-react'
 
 import { useScopedI18n } from '@/app/locales/client'
+import WebSearchResult from '@/components/chatbox/WebSearchResult'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
 import ViewMarkdown from '@/components/ui/markdown/ViewMarkdown'
 import { Separator } from '@/components/ui/separator'
-import { Textarea } from '@/components/ui/textarea'
 import {
     Tooltip,
     TooltipContent,
     TooltipProvider,
     TooltipTrigger,
 } from '@/components/ui/tooltip'
-import { Message } from 'ai'
-import WebSearchResult from '@/components/chatbox/WebSearchResult'
 
 interface MessageItemProps {
     message: Message
@@ -88,10 +87,10 @@ const MessageItem: React.FC<MessageItemProps> = ({
                                             >
                                                 {message.id ===
                                                     'copiedMessageId' ? (
-                                                    <Check className="h-4 w-4" />
-                                                ) : (
-                                                    <Copy className="h-4 w-4" />
-                                                )}
+                                                        <Check className="h-4 w-4" />
+                                                    ) : (
+                                                        <Copy className="h-4 w-4" />
+                                                    )}
                                             </Button>
                                         </TooltipTrigger>
                                         <TooltipContent>
@@ -212,25 +211,24 @@ const renderToolInvocation = ({
     switch (toolInvocation.toolName) {
         case 'tavily_web_search':
             return (
-            <div key={`${message.id}-tool-${index}`} className="mt-4">
-                <WebSearchResult
-                    key={
-                        `${toolInvocation.toolName}-${index}`
-                    }
-                    toolName={
-                        'tavily_web_search'
-                    }
-                    result={
-                        toolInvocation.result
-                    }
-                />
-            </div>
+                <div key={`${message.id}-tool-${index}`} className="mt-4">
+                    <WebSearchResult
+                        key={
+                            `${toolInvocation.toolName}-${index}`
+                        }
+                        toolName={
+                            'tavily_web_search'
+                        }
+                        result={
+                            toolInvocation.result
+                        }
+                    />
+                </div>
             )
         default:
             return null
     }
 }
-
 
 function MessageParts({
     message,
