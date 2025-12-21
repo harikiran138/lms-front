@@ -8,8 +8,8 @@ export default async function EditCoursePage({
     params: { courseId: string }
 }) {
     const supabase = createClient()
-    const courseData = await supabase
-        .from('courses')
+    const courseData: any = await (supabase
+        .from('courses') as any)
         .select('*')
         .eq('course_id', params.courseId)
         .single()

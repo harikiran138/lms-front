@@ -20,8 +20,8 @@ export default async function ExerciseStudentPage({
     const supabase = createClient()
     const userData = await supabase.auth.getUser()
 
-    const exercise = await supabase
-        .from('exercises')
+    const exercise: any = await (supabase
+        .from('exercises') as any)
         .select(
             `*,
             courses(title),
@@ -37,15 +37,15 @@ export default async function ExerciseStudentPage({
         })
         .single()
 
-    const profile = await supabase
-        .from('profiles')
+    const profile: any = await (supabase
+        .from('profiles') as any)
         .select('full_name, avatar_url')
         .eq('id', userData.data.user.id)
         .single()
 
     // search for other 3 exercises
-    const exercises = await supabase
-        .from('exercise_view')
+    const exercises: any = await (supabase
+        .from('exercise_view') as any)
         .select('*,exercise_completions(id),exercise_messages(id)')
         .eq('course_id', params.courseId)
         .neq('id', params.exerciseId)
@@ -54,8 +54,8 @@ export default async function ExerciseStudentPage({
         .limit(3)
 
     // Fetch the exercise files
-    const { data: exerciseFiles, error: filesError } = await supabase
-        .from('exercise_files')
+    const { data: exerciseFiles, error: filesError } = await (supabase
+        .from('exercise_files') as any)
         .select('file_path, content')
         .eq('exercise_id', params.exerciseId)
 
@@ -64,8 +64,8 @@ export default async function ExerciseStudentPage({
         // Handle the error appropriately
     }
 
-    const { data: lastSubmission, error: fetchError } = await supabase
-        .from('exercise_code_student_submissions')
+    const { data: lastSubmission, error: fetchError } = await (supabase
+        .from('exercise_code_student_submissions') as any)
         .select('submission_code')
         .eq('exercise_id', params.exerciseId)
         .eq('user_id', userData.data.user.id)

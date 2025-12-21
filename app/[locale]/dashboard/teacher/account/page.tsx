@@ -5,8 +5,8 @@ export default async function TeacherAccountPage2() {
     const supabase = createClient()
     const userData = await supabase.auth.getUser()
 
-    const profileData = await supabase
-        .from('profiles')
+    const profileData: any = await (supabase
+        .from('profiles') as any)
         .select('*')
         .eq('id', userData.data.user.id)
         .single()

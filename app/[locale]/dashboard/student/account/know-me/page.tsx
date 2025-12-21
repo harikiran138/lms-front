@@ -16,7 +16,7 @@ export default async function KnowMePage() {
         return null
     }
 
-    const profile = await supabase.from('profiles').select('data_person').eq('id', userData.data.user.id).single()
+    const profile = await (supabase.from('profiles') as any).select('data_person').eq('id', userData.data.user.id).single()
 
     if (profile.error) {
         return null
@@ -25,9 +25,8 @@ export default async function KnowMePage() {
     return (
         <KnowMeChatAI initialAIState={{ chatId: '', messages: [] }}>
             {
-                profile.data.data_person ? (
+                profile.data?.data_person ? (
                     <AIResponseDisplay
-                        // @ts-expect-error
                         data={profile.data.data_person}
                         hideSubmit
                     />

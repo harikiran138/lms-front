@@ -19,29 +19,10 @@ export default async function StudentExamReviewCoursePage ({
         throw new Error(userData.error.message)
     }
 
-    const examData = await supabase
-        .from('exams')
+    const examData: any = await (supabase
+        .from('exams') as any)
         .select(
             `
-        exam_id,
-        title,
-        description,
-        duration,
-        exam_date,
-        created_by,
-        courses (
-          title,
-          course_id
-        ),
-        exam_questions (
-          question_id,
-          question_text,
-          question_type,
-          question_options (
-            option_id,
-            is_correct,
-            option_text
-          )
         ),
         exam_submissions (
           submission_id,

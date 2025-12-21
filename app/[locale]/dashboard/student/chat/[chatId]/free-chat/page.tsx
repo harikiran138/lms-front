@@ -14,11 +14,12 @@ export default async function FreeChatPage({
     const supabase = await createClient()
     const userData = await supabase.auth.getUser()
 
-    const chat = await supabase
-        .from('chats')
+    const chat: any = await (supabase
+        .from('chats') as any)
         .select('*, messages(*)')
         .eq('chat_id', params.chatId)
         .eq('user_id', userData.data.user.id)
+        .order('created_at', { foreignTable: 'messages', ascending: true })
         .single()
 
     const formattedMessages = chat.data.messages.map((message: any) => {

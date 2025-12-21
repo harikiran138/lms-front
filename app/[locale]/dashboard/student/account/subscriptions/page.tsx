@@ -10,8 +10,8 @@ export default async function SubscriptionsPage () {
     const supabase = createClient()
     const user = await supabase.auth.getUser()
 
-    const subscriptions = await supabase
-        .from('subscriptions')
+    const subscriptions: any = await (supabase
+        .from('subscriptions') as any)
         .select('*, plans(*)')
         .eq('user_id', user.data.user.id)
         .single()

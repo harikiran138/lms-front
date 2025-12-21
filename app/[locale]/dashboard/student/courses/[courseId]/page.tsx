@@ -16,8 +16,8 @@ export async function generateMetadata(
 ): Promise<Metadata> {
     const supabase = createClient()
 
-    const courseData = await supabase
-        .from('courses')
+    const courseData: any = await (supabase
+        .from('courses') as any)
         .select('title, description, thumbnail_url')
         .eq('course_id', params.courseId)
         .single()
@@ -48,7 +48,7 @@ export default async function CourseStudentPage({
         return redirect('/auth/login')
     }
 
-    const courseData = await supabase
+    const courseData: any = await supabase
         .from('courses')
         .select(
             `*,
@@ -84,7 +84,7 @@ export default async function CourseStudentPage({
         .eq('exercises.exercise_completions.user_id', userData.data.user.id)
         .eq('exercises.exercise_messages.user_id', userData.data.user.id)
         .eq('lessons.lessons_ai_task_messages.user_id', userData.data.user.id)
-        .single()
+        .single() as any
 
     if (courseData.error != null) {
         throw new Error(courseData.error.message)

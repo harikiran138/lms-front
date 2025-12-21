@@ -13,8 +13,8 @@ export default async function OrdersPage () {
 
     const userData = await supabase.auth.getUser()
 
-    const orders = await supabase
-        .from('transactions')
+    const orders = await (supabase
+        .from('transactions') as any)
         .select('*, products(*)')
         .eq('user_id', userData.data.user.id)
         .order('transaction_date', { ascending: false })

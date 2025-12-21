@@ -19,13 +19,12 @@ export async function generateMetadata(
 ): Promise<Metadata> {
     const supabase = createClient()
 
-    const courseData = await supabase
-        .from('courses')
+    const { data: course } = await (supabase
+        .from('courses') as any)
         .select('title, description, thumbnail_url')
         .eq('course_id', params.courseId)
         .single()
 
-    const course = courseData.data
 
     const previousImages = (await parent).openGraph?.images || []
 
@@ -53,8 +52,8 @@ export default async function StudentCourseLessonsPage({
         throw new Error(user.error.message)
     }
 
-    const lessons = await supabase
-        .from('lessons')
+    const lessons: any = await (supabase
+        .from('lessons') as any)
         .select('*,courses(*),lesson_completions(*)')
         .eq('course_id', params.courseId)
         .eq('lesson_completions.user_id', user.data.user.id)

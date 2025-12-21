@@ -12,8 +12,8 @@ export default async function ExercisesPage({
     const t = await getI18n()
     const userData = await supabase.auth.getUser()
 
-    const exerciseData = await supabase
-        .from('exercises')
+    const exerciseData: any = await (supabase
+        .from('exercise_view') as any)
         .select(
             `
             id, 

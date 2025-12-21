@@ -23,8 +23,8 @@ export default async function StudentExamsCoursePage({
     if (userData.error != null) {
         return redirect('/auth/login')
     }
-    const exams = await supabase
-        .from('exams')
+    const exams: any = await (supabase
+        .from('exams') as any)
         .select(
             `*,
 			courses(*),

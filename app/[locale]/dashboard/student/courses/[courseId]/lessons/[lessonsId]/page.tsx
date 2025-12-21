@@ -27,7 +27,7 @@ export default async function StudentLessonPage({
     if (user.error != null) {
         throw new Error(user.error.message)
     }
-    const lessonData = await supabase.from('lessons').select(`*,
+    const lessonData: any = await (supabase.from('lessons').select(`*,
         courses(*),
         lesson_comments(*,
             profiles(*),
@@ -40,7 +40,7 @@ export default async function StudentLessonPage({
         .eq('id', params.lessonsId)
         .eq('lessons_ai_task_messages.user_id', user.data.user.id)
         .eq('lesson_completions.user_id', user.data.user.id)
-        .single()
+        .single() as any)
 
     const profile = await supabase
         .from('profiles')

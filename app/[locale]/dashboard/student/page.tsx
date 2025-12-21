@@ -14,7 +14,7 @@ async function getData(userId: string) {
     const supabase = createClient()
 
     const [lessonsView, userChats, subscriptions, notifications] = await Promise.all([
-        supabase
+        (supabase
             .from('distinct_lesson_views')
             .select(`
         lesson_id,
@@ -27,7 +27,7 @@ async function getData(userId: string) {
       `)
             .eq('user_id', userId)
             .order('viewed_at', { ascending: false })
-            .limit(6),
+            .limit(6) as any),
 
         supabase.from('chats').select('*').eq('user_id', userId),
 
@@ -37,8 +37,8 @@ async function getData(userId: string) {
     ])
 
     const coursesQuery = subscriptions.data?.length
-        ? supabase
-            .from('courses')
+        ? (supabase
+            .from('courses_view') as any)
             .select(`
         course_id,
         title,
@@ -68,7 +68,7 @@ async function getData(userId: string) {
             .eq('status', 'published')
             .eq('course.course_id.lessons.lesson_completions.user_id', userId)
 
-    const coursesResult = await coursesQuery
+    const coursesResult: any = await (coursesQuery)
 
     if (coursesResult.error) throw new Error(coursesResult.error.message)
     if (lessonsView.error) throw new Error(lessonsView.error.message)

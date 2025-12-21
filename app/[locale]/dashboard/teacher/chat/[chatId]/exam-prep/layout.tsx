@@ -13,8 +13,8 @@ export default async function ExamnChatIdPageLayout ({
 }) {
     const supabase = createClient()
 
-    const messagesData = await supabase
-        .from('chats')
+    const messagesData: any = await (supabase
+        .from('chats') as any)
         .select('*, messages(*)')
         .eq('chat_id', Number(params.chatId))
         .order('created_at', { foreignTable: 'messages', ascending: true })

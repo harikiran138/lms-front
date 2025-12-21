@@ -21,8 +21,8 @@ export default async function StudentExamCoursePage ({
         redirect('/auth/login')
     }
 
-    const exams = await supabase
-        .from('exams')
+    const exams: any = await (supabase
+        .from('exams') as any)
         .select(
             `* ,
             courses (*),
@@ -35,11 +35,11 @@ export default async function StudentExamCoursePage ({
         .eq('exam_id', params.examId)
         .single()
 
-    const examSubmission = await supabase
-        .from('exam_submissions')
+    const examSubmission: any = await (supabase
+        .from('exam_submissions') as any)
         .select('*')
         .eq('exam_id', params.examId)
-        .eq('student_id', userData.data?.user?.id)
+        .eq('user_id', userData.data.user.id)
         .single()
 
     console.log(examSubmission)

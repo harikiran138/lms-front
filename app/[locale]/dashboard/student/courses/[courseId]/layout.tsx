@@ -39,8 +39,8 @@ export default async function CoursesPageLayout ({
                 throw new Error(userSubscriptions?.error?.message || 'You are not authorized to view this page.')
             }
 
-            const courseTitle = await supabase
-                .from('courses')
+            const courseTitle: any = await (supabase
+                .from('courses') as any)
                 .select('title, description, thumbnail_url')
                 .eq('course_id', Number(params.courseId))
                 .single()
@@ -64,8 +64,8 @@ export default async function CoursesPageLayout ({
             throw new Error(userSubscriptions?.error?.message || 'You are not authorized to view this page.')
         }
 
-        const courseTitle = await supabase
-            .from('courses')
+        const courseTitle: any = await (supabase
+            .from('courses') as any)
             .select('title, description, thumbnail_url')
             .eq('course_id', Number(params.courseId))
             .single()
