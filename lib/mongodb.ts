@@ -13,13 +13,14 @@ interface MongooseConnection {
 
 // Global declaration to prevent multiple connections in dev mode
 declare global {
-    var mongoose: MongooseConnection | undefined
+  // eslint-disable-next-line no-var
+  var mongooseCache: MongooseConnection | undefined;
 }
 
-let cached: MongooseConnection = global.mongoose || { conn: null, promise: null }
+let cached: MongooseConnection = global.mongooseCache || { conn: null, promise: null };
 
 if (!cached) {
-    cached = global.mongoose = { conn: null, promise: null }
+  cached = global.mongooseCache = { conn: null, promise: null };
 }
 
 async function connectToDatabase() {
