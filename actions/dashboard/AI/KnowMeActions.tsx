@@ -204,7 +204,7 @@ type Question = {
 
                 yield <ChatLoadingSkeleton />
 
-                const aiMessageInsert = await supabase.from('messages').insert({
+                const aiMessageInsert = await (supabase.from('messages') as any).insert({
                     chat_id: +aiState.get().chatId,
                     message: content,
                     sender: 'assistant',
@@ -297,7 +297,7 @@ type Question = {
 
                     const getProfile = await supabase.from('profiles').select('data_person').eq('id', userData.data.user.id).single()
 
-                    const profileUpdate = await supabase.from('profiles').update({
+                    const profileUpdate = await (supabase.from('profiles') as any).update({
                         data_person: {
                             // @ts-expect-error
                             ...getProfile.data.data_person,

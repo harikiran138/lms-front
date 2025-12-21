@@ -38,13 +38,13 @@ export const updateProfile = async (formData: FormData) => {
         return createResponse('error', 'No photo was submitted', null)
     }
 
-    const { data, error } = await supabase
-        .from('profiles')
+    const { data, error } = await (supabase
+        .from('profiles') as any)
         .update({
             bio: formData.get('bio') as string,
             full_name: formData.get('name') as string,
             avatar_url: formData.get('photo') as string
-        })
+        } as any)
         .eq('id', user?.id)
 
     if (error) {

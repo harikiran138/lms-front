@@ -23,7 +23,7 @@ export async function createCourseAction (prevDate: any, data: FormData) {
 
     const author_id = userData.data.user.id
 
-    const courseData = await supabase.from('courses').insert([{
+    const courseData = await (supabase.from('courses') as any).insert([{
         title,
         description,
         status: 'draft',
@@ -83,17 +83,17 @@ export async function enrollUserToCourseAction ({
         return createResponse('error', 'User not found', null, null)
     }
 
-    const userSubscription = await supabase
-        .from('subscriptions')
+    const userSubscription = await (supabase
+        .from('subscriptions') as any)
         .select('subscription_id')
         .eq('user_id', userData.data.user.id)
         .single()
 
-    if (userSubscription.error) {
-        return createResponse('error', 'Error getting user subscription', null, userSubscription.error.message)
+    if (userSubscription.error || !userSubscription.data) {
+        return createResponse('error', 'Error getting user subscription', null, userSubscription.error?.message || 'No subscription found')
     }
 
-    const enrollmentData = await supabase.from('enrollments').insert([{
+    const enrollmentData = await (supabase.from('enrollments') as any).insert([{
         course_id: courseId,
         subscription_id: userSubscription.data.subscription_id,
         user_id: userData.data.user.id,
@@ -123,7 +123,7 @@ export async function updateCourseAction(prevDate: any, data: FormData) {
 
     console.log(status)
 
-    const courseData = await supabase.from('courses').update({
+    const courseData = await (supabase.from('courses') as any).update({
         title,
         description,
         status,

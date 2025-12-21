@@ -28,7 +28,7 @@ export async function POST(req: Request) {
             if (
                 response.text !== ''
             ) {
-                const save = await supabase.from('lessons_ai_task_messages').insert({
+                const save = await (supabase.from('lessons_ai_task_messages') as any).insert({
                     lesson_id: lessonId,
                     message: response.text,
                     sender: 'assistant',
@@ -52,7 +52,7 @@ export async function POST(req: Request) {
                 execute: async (params) => {
                     const toolCallId = generateId()
 
-                    const saveMessage = await supabase.from('lessons_ai_task_messages').insert([
+                    const saveMessage = await (supabase.from('lessons_ai_task_messages') as any).insert([
                         {
                             lesson_id: lessonId,
                             message: params.feedback,
@@ -66,7 +66,7 @@ export async function POST(req: Request) {
                         throw new Error(saveMessage.error.message)
                     }
 
-                    const saveTask = await supabase.from('lesson_completions').insert([
+                    const saveTask = await (supabase.from('lesson_completions') as any).insert([
                         {
                             lesson_id: lessonId,
                             user_id: userData.data.user.id,

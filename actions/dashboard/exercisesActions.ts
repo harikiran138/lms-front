@@ -16,8 +16,8 @@ export async function deleteExerciseAction(data: { exerciseId: string }) {
     }
 
     const supabase = createClient()
-    const exerciseData = await supabase
-        .from('exercises')
+    const exerciseData = await (supabase
+        .from('exercises') as any)
         .delete()
         .eq('id', exerciseId)
 
@@ -46,8 +46,8 @@ export async function deleteMessagesAndCompletitionOfExerciseAction(data: { exer
         return createResponse('error', 'Error fetching user', null, 'Error fetching user')
     }
 
-    const completionsData = await supabase
-        .from('exercise_completions')
+    const completionsData = await (supabase
+        .from('exercise_completions') as any)
         .delete()
         .eq('exercise_id', exerciseId)
         .eq('user_id', userData.data.user.id)
@@ -57,8 +57,8 @@ export async function deleteMessagesAndCompletitionOfExerciseAction(data: { exer
         return createResponse('error', 'Error deleting completions', null, 'Error deleting completions')
     }
 
-    const messagesData = await supabase
-        .from('exercise_messages')
+    const messagesData = await (supabase
+        .from('exercise_messages') as any)
         .delete()
         .eq('exercise_id', exerciseId)
         .eq('user_id', userData.data.user.id)
@@ -92,14 +92,14 @@ export async function editExerciseMessageAction(data: { exerciseId: string, mess
     }
 
     // check if the messageId is a number or a string with a number
-    const messageData = /^\d+$/.test(messageId) ? await supabase
-        .from('exercise_messages')
+    const messageData = /^\d+$/.test(messageId) ? await (supabase
+        .from('exercise_messages') as any)
         .update({ message })
         .eq('exercise_id', exerciseId)
         .eq('id', messageId)
         .eq('user_id', userData.data.user.id)
-        : await supabase
-            .from('exercise_messages')
+        : await (supabase
+            .from('exercise_messages') as any)
             .update({ message })
             .eq('exercise_id', exerciseId)
             .eq('message', message)
@@ -132,14 +132,14 @@ export async function deleteExerciseMessageAction(data: { exerciseId: string, me
         return createResponse('error', 'Error fetching user', null, 'Error fetching user')
     }
 
-    const messageData = /^\d+$/.test(messageId) ? await supabase
-        .from('exercise_messages')
+    const messageData = /^\d+$/.test(messageId) ? await (supabase
+        .from('exercise_messages') as any)
         .delete()
         .eq('exercise_id', exerciseId)
         .eq('id', messageId)
         .eq('user_id', userData.data.user.id)
-        : await supabase
-            .from('exercise_messages')
+        : await (supabase
+            .from('exercise_messages') as any)
             .delete()
             .eq('exercise_id', exerciseId)
             .eq('message', data.messageContent)
@@ -186,7 +186,7 @@ export async function actionButtonsAction(data: { exerciseId: string, messages: 
                 }),
                 execute: async ({ feedback }) => {
                     console.log('feedback', feedback)
-                    const save = await supabase.from('exercise_completions').insert(
+                    const save = await (supabase.from('exercise_completions') as any).insert(
                         {
                             exercise_id: +exerciseId,
                             user_id: userData.data.user.id,
@@ -194,7 +194,7 @@ export async function actionButtonsAction(data: { exerciseId: string, messages: 
                         }
                     )
 
-                    const saveText = await supabase.from('exercise_messages').insert(
+                    const saveText = await (supabase.from('exercise_messages') as any).insert(
                         {
                             exercise_id: +exerciseId,
                             user_id: userData.data.user.id,
@@ -256,8 +256,8 @@ export async function markExerciseCompletedAction(data: { exerciseId: number }) 
     }
 
     // Check if completion already exists
-    const { data: existingCompletion, error: existingCompletionError } = await supabase
-        .from('exercise_completions')
+    const { data: existingCompletion, error: existingCompletionError } = await (supabase
+        .from('exercise_completions') as any)
         .select('*')
         .eq('exercise_id', exerciseId)
         .eq('user_id', userData.data.user.id)
@@ -272,8 +272,8 @@ export async function markExerciseCompletedAction(data: { exerciseId: number }) 
         return createResponse('error', 'Exercise already marked as completed', null, 'Exercise already marked as completed')
     }
 
-    const completionData = await supabase
-        .from('exercise_completions')
+    const completionData = await (supabase
+        .from('exercise_completions') as any)
         .insert({
             exercise_id: exerciseId,
             user_id: userData.data.user.id,
@@ -306,8 +306,8 @@ export async function saveUserSubmissionAction(data: { exerciseId: number, submi
     }
 
     // search for the last submission
-    const { data: lastSubmission, error } = await supabase
-        .from('exercise_code_student_submissions')
+    const { data: lastSubmission, error } = await (supabase
+        .from('exercise_code_student_submissions') as any)
         .select('id')
         .eq('exercise_id', exerciseId)
         .eq('user_id', userData.data.user.id)
@@ -317,8 +317,8 @@ export async function saveUserSubmissionAction(data: { exerciseId: number, submi
     // if no sub is found, insert a new one
     if (!lastSubmission || error) {
         console.log('Is a new submission')
-        const { data: submissionData, error } = await supabase
-            .from('exercise_code_student_submissions')
+        const { data: submissionData, error } = await (supabase
+            .from('exercise_code_student_submissions') as any)
             .insert(
                 {
                     exercise_id: exerciseId,
@@ -340,8 +340,8 @@ export async function saveUserSubmissionAction(data: { exerciseId: number, submi
 
         console.log('lastSubmission', lastSubmission)
         console.log('Is an update')
-        const { data: submissionData, error } = await supabase
-            .from('exercise_code_student_submissions')
+        const { data: submissionData, error } = await (supabase
+            .from('exercise_code_student_submissions') as any)
             .update(
                 {
                     submission_code: submissionCode,

@@ -20,14 +20,14 @@ export async function studentCreateNewChat (state: {
 
     const studentId = userData.data.user?.id
 
-    const chatInsert = await supabase.from('chats').insert({
+    const chatInsert = await (supabase.from('chats') as any).insert({
         user_id: studentId,
         chat_type: state.chatType,
         created_at: new Date().toISOString(),
         title: state.title
     }).select('chat_id').single()
 
-    const messageInsert = await supabase.from('messages').insert({
+    const messageInsert = await (supabase.from('messages') as any).insert({
         chat_id: chatInsert.data.chat_id,
         message: state.title,
         sender: 'user',
@@ -61,7 +61,7 @@ export async function studentCreateNewChatAndRedirect (state: {
 
     const studentId = userData.data.user?.id
 
-    const chatInsert = await supabase.from('chats').insert({
+    const chatInsert = await (supabase.from('chats') as any).insert({
         user_id: studentId,
         chat_type: state.chatType,
         created_at: new Date().toISOString(),
@@ -69,7 +69,7 @@ export async function studentCreateNewChatAndRedirect (state: {
     }).select('chat_id').single()
 
     if (state.insertMessage) {
-        const messageInsert = await supabase.from('messages').insert({
+        const messageInsert = await (supabase.from('messages') as any).insert({
             chat_id: chatInsert.data.chat_id,
             message: state.title,
             sender: 'user',
@@ -104,7 +104,7 @@ export async function studentInsertChatMessage (state: {
         return createResponse('error', 'Error no user found', null, 'Error no user found')
     }
 
-    const messageInsert = await supabase.from('messages').insert({
+    const messageInsert = await (supabase.from('messages') as any).insert({
         chat_id: state.chatId,
         message: state.message,
         sender: 'user',
@@ -129,7 +129,7 @@ export async function studentUpdateChatTitle (state: {
         return createResponse('error', 'Error no user found', null, 'Error no user found')
     }
 
-    const chatUpdate = await supabase.from('chats').update({
+    const chatUpdate = await (supabase.from('chats') as any).update({
         title: state.title
     }).eq('chat_id', state.chatId)
 
@@ -153,7 +153,7 @@ export async function insertChatMessage (state: {
         return createResponse('error', 'Error no user found', null, 'Error no user found')
     }
 
-    const messageInsert = await supabase.from('messages').insert({
+    const messageInsert = await (supabase.from('messages') as any).insert({
         chat_id: state.chatId,
         message: state.message,
         sender: state.sender,
@@ -178,7 +178,7 @@ export async function studentUpdateChat (state: {
         return createResponse('error', 'Error no user found', null, 'Error no user found')
     }
 
-    const chatUpdate = await supabase.from('chats').update({
+    const chatUpdate = await (supabase.from('chats') as any).update({
         title: state.title
     }).eq('chat_id', state.chatId)
 
@@ -201,7 +201,7 @@ export async function studentSubmitMessage (state: {
         return createResponse('error', 'Error no user found', null, 'Error no user found')
     }
 
-    const messageInsert = await supabase.from('messages').insert({
+    const messageInsert = await (supabase.from('messages') as any).insert({
         chat_id: state.chatId,
         message: state.message,
         sender: 'user',
@@ -248,7 +248,7 @@ async function getUserData(supabase) {
 
 // Helper function to update a message
 async function updateMessage(supabase, messageId, newMessage) {
-    const messageData = await supabase.from('messages').update({ message: newMessage }).eq('id', messageId).select('id').single()
+    const messageData = await (supabase.from('messages') as any).update({ message: newMessage }).eq('id', messageId).select('id').single()
     if (messageData.error) {
         console.log('Error updating message in the database', messageData.error)
         return { error: 'Error updating message in the database' }

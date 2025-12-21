@@ -15,8 +15,8 @@ export async function generateMetadata(
 ): Promise<Metadata> {
     const supabase = createClient()
 
-    const exercise = await supabase
-        .from('exercises')
+    const exercise = await (supabase
+        .from('exercises') as any)
         .select('title, description, courses(title, thumbnail_url)')
         .eq('id', params.exerciseId)
         .single()
@@ -39,8 +39,8 @@ export default async function ExerciseStudentPage({
 }) {
     const supabase = createClient()
 
-    const exercise = await supabase
-        .from('exercises')
+    const exercise = await (supabase
+        .from('exercises') as any)
         .select(
             `*,
             courses(title, thumbnail_url),
@@ -56,15 +56,15 @@ export default async function ExerciseStudentPage({
         })
         .single()
 
-    const profile = await supabase
-        .from('profiles')
+    const profile = await (supabase
+        .from('profiles') as any)
         .select('full_name, avatar_url')
         .eq('id', params.studentId)
         .single()
 
     // Fetch the exercise files
-    const { data: exerciseFiles, error: filesError } = await supabase
-        .from('exercise_files')
+    const { data: exerciseFiles, error: filesError } = await (supabase
+        .from('exercise_files') as any)
         .select('file_path, content')
         .eq('exercise_id', params.exerciseId)
 
@@ -73,8 +73,8 @@ export default async function ExerciseStudentPage({
         // Handle the error appropriately
     }
 
-    const { data: lastSubmission, error: fetchError } = await supabase
-        .from('exercise_code_student_submissions')
+    const { data: lastSubmission, error: fetchError } = await (supabase
+        .from('exercise_code_student_submissions') as any)
         .select('submission_code')
         .eq('exercise_id', params.exerciseId)
         .eq('user_id', params.studentId)

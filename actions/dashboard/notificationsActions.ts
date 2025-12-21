@@ -7,8 +7,8 @@ import { Tables } from '@/utils/supabase/supabase'
 
 export async function notificationUpdate (notification: Tables<'notifications'>) {
     const supabase = createClient()
-    const commentUpdate = await supabase
-        .from('notifications')
+    const commentUpdate = await (supabase
+        .from('notifications') as any)
         .update({
             ...notification
         })

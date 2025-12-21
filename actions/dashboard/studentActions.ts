@@ -23,7 +23,7 @@ export async function studentSubmitLessonComment (state: {
 
     const studentId = userData.data.user?.id
 
-    const commentInsert = await supabase.from('lesson_comments').insert({
+    const commentInsert = await (supabase.from('lesson_comments') as any).insert({
         user_id: studentId,
         lesson_id: state.lesson_id,
         content: state.comment,
@@ -37,17 +37,17 @@ export async function studentSubmitLessonComment (state: {
 
     // if comment is a reply, then add a new notification for the parent comment owner
     if (state.parent_comment_id) {
-        const parentComment = await supabase
-            .from('lesson_comments')
+        const parentComment = await (supabase
+            .from('lesson_comments') as any)
             .select('user_id')
             .eq('id', state.parent_comment_id)
             .single()
 
-        if (parentComment.error) {
+        if (parentComment.error || !parentComment.data) {
             return createResponse('error', 'Error searching for parent comment', null, 'Error searching for parent comment')
         }
 
-        const notificationInsert = await supabase.from('notifications').insert({
+        const notificationInsert = await (supabase.from('notifications') as any).insert({
             user_id: parentComment.data.user_id,
             message: `${state.comment}`,
             link: `/dashboard/student/courses/${state.course_id}/lessons/${state.lesson_id}`,
@@ -74,7 +74,7 @@ export async function cancelSubscription ({
 }) {
     console.log('Cancel subscription')
     const supabase = createClient()
-    const cancelSubscription = await supabase
+    const cancelSubscription = await (supabase as any)
         .rpc('cancel_subscription', {
             _user_id: userId,
             _plan_id: planId
@@ -109,8 +109,8 @@ export async function updateUserProfile({
         bio: bio?.trim(),
         avatar_url: avatarUrl.trim()
     }
-    const profileUpdate = await supabase
-        .from('profiles')
+    const profileUpdate = await (supabase
+        .from('profiles') as any)
         .update(updateData)
         .eq('id', userData.data.user?.id)
     if (profileUpdate.error) {
@@ -153,8 +153,8 @@ export async function addReactionToComment ({
             revalidatePath('/dashboard/student/courses/[courseId]/lessons/[lessonId]', 'layout')
             return createResponse('success', 'Reaction deleted successfully', null, null)
         } else {
-            const reactionUpdate = await supabase
-                .from('comment_reactions')
+            const reactionUpdate = await (supabase
+                .from('comment_reactions') as any)
                 .update({
                     reaction_type: reactionType
                 })
@@ -171,7 +171,7 @@ export async function addReactionToComment ({
 
     const studentId = userData.data.user?.id
 
-    const reactionInsert = await supabase.from('comment_reactions').insert({
+    const reactionInsert = await (supabase.from('comment_reactions') as any).insert({
         user_id: studentId,
         comment_id: commentId,
         reaction_type: reactionType
@@ -193,8 +193,8 @@ export async function updateComment ({
     content: string
 }) {
     const supabase = createClient()
-    const commentUpdate = await supabase
-        .from('lesson_comments')
+    const commentUpdate = await (supabase
+        .from('lesson_comments') as any)
         .update({
             content
         })
@@ -228,7 +228,7 @@ export async function addReview({
         return createResponse('error', 'Error getting user data', null, 'Error getting user data')
     }
 
-    const insertReview = await supabase.from('reviews').insert({
+    const insertReview = await (supabase.from('reviews') as any).insert({
         entity_id: entityId,
         entity_type: entityType,
         rating: stars,

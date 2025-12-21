@@ -13,8 +13,8 @@ export default async function ProductIdPage({
 }) {
     const supabase = createClient()
 
-    const data = await supabase
-        .from('products')
+    const data = await (supabase
+        .from('products') as any)
         .select('*')
         .eq('product_id', params.productId)
         .single()

@@ -19,7 +19,7 @@ import { courseCols } from './courseCols'
 export default async function CreateCoursePage () {
     const supabase = createClient()
 
-    const course = await supabase.from('courses').select('*').order('created_at', { ascending: false })
+    const course = await (supabase.from('courses') as any).select('*').order('created_at', { ascending: false })
 
     if (course.error != null) {
         console.log(course.error.message)

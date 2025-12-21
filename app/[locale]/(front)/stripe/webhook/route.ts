@@ -33,16 +33,16 @@ export async function POST (req: Request) {
 
                 if (productId) {
                     // update invoice and set it to paid
-                    const update = await supabase
-                        .from('transactions')
+                    const update = await (supabase
+                        .from('transactions') as any)
                         .update({ status: 'successful' })
                         .eq('transaction_id', invoiceId)
 
                     break
                 } else if (planId) {
                     // update invoice and set it to paid
-                    const update = await supabase
-                        .from('transactions')
+                    const update = await (supabase
+                        .from('transactions') as any)
                         .update({ status: 'successful' })
                         .eq('transaction_id', invoiceId)
 

@@ -20,11 +20,11 @@ export default async function Notifications () {
 
     const userData = await supabase.auth.getUser()
 
-    const { data: notifications, error } = await supabase
-        .from('notifications')
+    const { data: notifications, error } = await (supabase
+        .from('notifications') as any)
         .select('*')
         .limit(5)
-        .eq('user_id', userData?.data.user.id)
+        .eq('user_id', userData?.data?.user?.id)
         .order('created_at', { ascending: false })
 
     if (error) {

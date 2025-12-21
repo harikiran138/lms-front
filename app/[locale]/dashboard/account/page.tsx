@@ -14,38 +14,38 @@ async function getProfileData(userId: string) {
     const supabase = createClient()
 
     // Fetch basic profile data
-    const { data: profile } = await supabase.from('profiles').select('*, user_roles(role)').eq('id', userId).single()
+    const { data: profile } = await (supabase.from('profiles') as any).select('*, user_roles(role)').eq('id', userId).single()
 
     // Fetch course completions
-    const { count: completedCourses } = await supabase
-        .from('lesson_completions')
+    const { count: completedCourses } = await (supabase
+        .from('lesson_completions') as any)
         .select('*', { count: 'exact' })
         .eq('user_id', userId)
 
     // Fetch total courses enrolled
-    const { count: totalCourses } = await supabase
-        .from('enrollments')
+    const { count: totalCourses } = await (supabase
+        .from('enrollments') as any)
         .select('*', { count: 'exact' })
         .eq('user_id', userId)
 
     // Fetch recent activity (lesson views and exam views)
-    const { data: recentLessonViews } = await supabase
-        .from('distinct_lesson_views')
+    const { data: recentLessonViews } = await (supabase
+        .from('distinct_lesson_views') as any)
         .select('*')
         .eq('user_id', userId)
         .order('viewed_at', { ascending: false })
         .limit(5)
 
-    const { data: recentExamViews } = await supabase
-        .from('distinct_exam_views')
+    const { data: recentExamViews } = await (supabase
+        .from('distinct_exam_views') as any)
         .select('*')
         .eq('user_id', userId)
         .order('viewed_at', { ascending: false })
         .limit(5)
 
     // Fetch active subscription
-    const { data: subscription } = await supabase
-        .from('subscriptions')
+    const { data: subscription } = await (supabase
+        .from('subscriptions') as any)
         .select(`
       *,
       plans(
@@ -59,8 +59,8 @@ async function getProfileData(userId: string) {
         .single()
 
     // Fetch transaction history
-    const { data: transactions } = await supabase
-        .from('transactions')
+    const { data: transactions } = await (supabase
+        .from('transactions') as any)
         .select('*')
         .eq('user_id', userId)
         .order('transaction_date', { ascending: false })

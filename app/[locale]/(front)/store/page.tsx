@@ -5,7 +5,7 @@ import { createClient } from '@/utils/supabase/server'
 
 export default async function StorePage () {
     const supabase = createClient()
-    const info = await supabase.from('products').select('*')
+    const info = await (supabase.from('products') as any).select('*')
 
     return (
         <div className="min-h-full">

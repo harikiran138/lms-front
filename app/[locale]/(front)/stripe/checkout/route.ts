@@ -32,8 +32,8 @@ export async function POST (req: NextRequest) {
 
     console.log(fullUser)
 
-    const profile = await supabase
-        .from('profiles')
+    const profile = await (supabase
+        .from('profiles') as any)
         .select('*')
         .eq('id', fullUser?.data?.user?.id)
         .single()
@@ -55,24 +55,24 @@ export async function POST (req: NextRequest) {
             console.log(stripeCustomerID)
 
             // add stripe customer id to user
-            const update = await supabase
-                .from('profiles')
+            const update = await (supabase
+                .from('profiles') as any)
                 .update({ stripeCustomerID })
                 .match({ id: fullUser?.data.user?.id })
 
             console.log(update, '<----------- update')
         }
 
-        const productData = await supabase
-            .from('products')
+        const productData = await (supabase
+            .from('products') as any)
             .select('*')
             .eq('product_id', productId)
             .single()
 
         console.log(productData, '<----------- productData')
 
-        const transaction = await supabase
-            .from('transactions')
+        const transaction = await (supabase
+            .from('transactions') as any)
             .insert({
                 amount: productData?.data?.price,
                 user_id: fullUser?.data.user?.id as any,

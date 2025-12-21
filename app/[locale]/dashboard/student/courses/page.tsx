@@ -12,20 +12,20 @@ export async function generateMetadata(
     const supabase = createClient()
     const user = await supabase.auth.getUser()
 
-    const subscriptions = await supabase
-        .from('subscriptions')
+    const subscriptions = await (supabase
+        .from('subscriptions') as any)
         .select('subscription_id')
         .eq('user_id', user.data.user.id)
 
     const coursesQuery =
         subscriptions.data.length > 0
-            ? supabase
-                .from('courses')
+            ? (supabase
+                .from('courses') as any)
                 .select('title, thumbnail_url, enrollments(user_id)')
                 .eq('status', 'published')
                 .eq('enrollments.user_id', user.data.user.id)
-            : supabase
-                .from('enrollments')
+            : (supabase
+                .from('enrollments') as any)
                 .select('course:course_id(title, thumbnail_url)')
                 .eq('user_id', user.data.user.id)
 
@@ -49,15 +49,15 @@ export default async function CourseSectionComponent() {
     const user = await supabase.auth.getUser()
     const t = await getScopedI18n('BreadcrumbComponent')
 
-    const subscriptions = await supabase
-        .from('subscriptions')
+    const subscriptions = await (supabase
+        .from('subscriptions') as any)
         .select('subscription_id')
         .eq('user_id', user.data.user.id)
 
     const coursesQuery =
         subscriptions.data.length > 0
-            ? supabase
-                .from('courses')
+            ? (supabase
+                .from('courses') as any)
                 .select(
                     `
                 course_id,
@@ -74,8 +74,8 @@ export default async function CourseSectionComponent() {
                 .eq('lessons.lesson_completions.user_id', user.data.user.id)
                 .eq('enrollments.user_id', user.data.user.id)
                 .eq('exercises.exercise_completions.user_id', user.data.user.id)
-            : supabase
-                .from('enrollments')
+            : (supabase
+                .from('enrollments') as any)
                 .select(
                     `
                 course:course_id(

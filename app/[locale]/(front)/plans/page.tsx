@@ -38,16 +38,19 @@ function PricingSection({ plans, userPlan }: { plans: any; userPlan?: number }) 
 export default async function PlanPage() {
     const supabase = createClient()
     const userData = await supabase.auth.getUser()
-    const plans = await supabase.from('plans').select('*').is('deleted_at', null)
+    const plans = await (supabase.from('plans') as any)
+        .select('*')
+        .is('deleted_at', null)
+        .order('price', { ascending: true })
 
     if (userData.error) {
         return <PricingSection plans={plans.data} />
     }
 
-    const subscriptions = await supabase
-        .from('subscriptions')
+    const subscriptions = await (supabase
+        .from('subscriptions') as any)
         .select('*')
-        .eq('user_id', userData.data.user.id)
+        .eq('user_id', userData.data.user!.id)
         .single()
 
     if (plans.error != null) {

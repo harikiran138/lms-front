@@ -31,8 +31,8 @@ export async function editLessonsAction (prevDate: any, data: FormData) {
         return createResponse('error', 'User not found', null, 'User not found')
     }
 
-    const lessonData = await supabase
-        .from('lessons')
+    const lessonData = await (supabase
+        .from('lessons') as any)
         .update({
             title,
             content,
@@ -51,8 +51,8 @@ export async function editLessonsAction (prevDate: any, data: FormData) {
     }
 
     if (system_prompt) {
-        const lessonAiAssignmentData = await supabase
-            .from('lessons_ai_tasks')
+        const lessonAiAssignmentData = await (supabase
+            .from('lessons_ai_tasks') as any)
             .upsert({
                 system_prompt,
                 task_instructions,
@@ -106,10 +106,9 @@ export async function createLessonsAction (prevDate: any, data: FormData) {
         return createResponse('error', 'User not found', null, 'User not found')
     }
 
-    const lessonData = await supabase
-        .from('lessons')
+    const lessonData = await (supabase
+        .from('lessons') as any)
         .insert({
-            // @ts-expect-error: ERR
             title,
             content,
             video_url,
@@ -127,8 +126,8 @@ export async function createLessonsAction (prevDate: any, data: FormData) {
         return createResponse('error', 'Error creating lesson', null, 'Error creating lesson')
     }
 
-    const lessonAiAssignmentData = await supabase
-        .from('lessons_ai_tasks')
+    const lessonAiAssignmentData = await (supabase
+        .from('lessons_ai_tasks') as any)
         .insert({
             lesson_id: lessonData.data.id,
             system_prompt,
@@ -192,7 +191,7 @@ export async function studentSubmitAiTaskMessage({
     }
 
     const id = userData.data.user.id
-    const messageData = await supabase.from('lessons_ai_task_messages').insert({
+    const messageData = await (supabase.from('lessons_ai_task_messages') as any).insert({
         user_id: id,
         message: message.content,
         sender: message.role as 'assistant' | 'user',
@@ -219,7 +218,7 @@ async function getUserData(supabase) {
 
 // Helper function to update a message
 async function updateMessage(supabase, messageId, newMessage) {
-    const messageData = await supabase.from('lessons_ai_task_messages').update({ message: newMessage }).eq('id', messageId).select('id').single()
+    const messageData = await (supabase.from('lessons_ai_task_messages') as any).update({ message: newMessage }).eq('id', messageId).select('id').single()
     if (messageData.error) {
         console.log('Error updating message in the database', messageData.error)
         return { error: 'Error updating message in the database' }
@@ -269,7 +268,7 @@ export async function studentEditAiTaskMessage({
         if (updateResult.error) return createResponse('error', updateResult.error, null, updateResult.error)
 
         if (sender === 'user' && regenerate) {
-            const nextMessagesData = await supabase.from('lessons_ai_task_messages').select('id').eq('lesson_id', lessonId).eq('user_id', userId).gt('id', messageId).order('id', { ascending: true })
+            const nextMessagesData = await (supabase.from('lessons_ai_task_messages') as any).select('id').eq('lesson_id', lessonId).eq('user_id', userId).gt('id', messageId).order('id', { ascending: true })
             if (nextMessagesData.error) return createResponse('error', 'Error getting next message', null, 'Error getting next message')
 
             if (nextMessagesData.data) {
@@ -282,7 +281,7 @@ export async function studentEditAiTaskMessage({
         }
         return revalidatePathAndRespond('/dashboard/student/courses/[courseId]/lessons/[lessonId]', 'layout', updateResult.id)
     } else {
-        const messageData = await supabase.from('lessons_ai_task_messages').select('id, message').eq('lesson_id', lessonId).eq('user_id', userId).order('id', { ascending: true })
+        const messageData = await (supabase.from('lessons_ai_task_messages') as any).select('id, message').eq('lesson_id', lessonId).eq('user_id', userId).order('id', { ascending: true })
         if (messageData.error) return createResponse('error', 'Error getting messages from the database', null, 'Error getting messages from the database')
 
         const messages = messageData.data
@@ -292,7 +291,7 @@ export async function studentEditAiTaskMessage({
         const messageIdToUpdate = messages[messageIndex].id
 
         if (sender === 'user' && regenerate) {
-            const nextMessagesData = await supabase.from('lessons_ai_task_messages').select('id').eq('lesson_id', lessonId).eq('user_id', userId).gt('id', messageIdToUpdate).order('id', { ascending: true })
+            const nextMessagesData = await (supabase.from('lessons_ai_task_messages') as any).select('id').eq('lesson_id', lessonId).eq('user_id', userId).gt('id', messageIdToUpdate).order('id', { ascending: true })
             if (nextMessagesData.error) return createResponse('error', 'Error getting next message', null, 'Error getting next message')
 
             if (nextMessagesData.data) {
@@ -371,7 +370,7 @@ export async function studentResetAiTaskConversation({
     if (userData.error) return createResponse('error', userData.error, null, userData.error)
 
     const userId = userData.id
-    const messageData = await supabase.from('lessons_ai_task_messages').select('id').eq('lesson_id', lessonId).eq('user_id', userId)
+    const messageData = await (supabase.from('lessons_ai_task_messages') as any).select('id').eq('lesson_id', lessonId).eq('user_id', userId)
     if (messageData.error) return createResponse('error', 'Error getting messages from the database', null, 'Error getting messages from the database')
 
     const messagesToDelete = messageData.data.map((msg) => msg.id)
@@ -379,9 +378,9 @@ export async function studentResetAiTaskConversation({
     if (deleteResult.error) return createResponse('error', deleteResult.error, null, deleteResult.error)
 
     // check if the lessons is marked as completed
-    const lessonCompletionData = await supabase.from('lesson_completions').select('id').eq('lesson_id', lessonId).eq('user_id', userId).single()
+    const lessonCompletionData = await (supabase.from('lesson_completions') as any).select('id').eq('lesson_id', lessonId).eq('user_id', userId).single()
 
-    if (lessonCompletionData.data.id) {
+    if (lessonCompletionData.data?.id) {
         const deleteCompletionData = await supabase.from('lesson_completions').delete().eq('id', lessonCompletionData.data.id)
         if (deleteCompletionData.error) return createResponse('error', 'Error deleting lesson completion', null, 'Error deleting lesson completion')
     }
@@ -420,14 +419,14 @@ export async function actionButtonsActionLessons(data: { lessonId: number, messa
                 }),
                 execute: async ({ feedback }) => {
                     console.log('feedback', feedback)
-                    const save = await supabase.from('lesson_completions').insert(
+                    const save = await (supabase.from('lesson_completions') as any).insert(
                         {
                             lesson_id: +lessonId,
                             user_id: userData.data.user.id,
                         }
                     )
 
-                    const saveText = await supabase.from('lessons_ai_task_messages').insert(
+                    const saveText = await (supabase.from('lessons_ai_task_messages') as any).insert(
                         {
                             lesson_id: +lessonId,
                             user_id: userData.data.user.id,
@@ -471,7 +470,7 @@ export async function markLessonAsCompleted(lessonId: number) {
         return createResponse('error', 'Error getting user data', null, 'Error getting user data')
     }
 
-    const completionData = await supabase.from('lesson_completions').insert({
+    const completionData = await (supabase.from('lesson_completions') as any).insert({
         lesson_id: lessonId,
         user_id: userData.data.user.id,
         completed_at: new Date().toISOString()

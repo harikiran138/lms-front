@@ -190,7 +190,7 @@ Also you can chat the user and ask him questions about the subject to get more i
                     ]
                 })
 
-                const aiMessageInsert = await supabase.from('messages').insert({
+                const aiMessageInsert = await (supabase.from('messages') as any).insert({
                     chat_id: +aiState.get().chatId,
                     message: content,
                     sender: 'assistant',
@@ -270,7 +270,7 @@ Also you can chat the user and ask him questions about the subject to get more i
                         ]
                     })
 
-                    const aiMessageInsert = await supabase.from('messages').insert([
+                    const aiMessageInsert = await (supabase.from('messages') as any).insert([
                         {
                             chat_id: +aiState.get().chatId,
                             message: JSON.stringify([
@@ -388,8 +388,8 @@ Also you can chat the user and ask him questions about the subject to get more i
                         ]
                     })
 
-                    const aiMessageInsert = await supabase
-                        .from('messages')
+                    const aiMessageInsert = await (supabase
+                        .from('messages') as any)
                         .insert([
                             {
                                 chat_id: +aiState.get().chatId,
@@ -506,7 +506,7 @@ Also you can chat the user and ask him questions about the subject to get more i
                         ]
                     })
 
-                    const aiMessageInsert = await supabase.from('messages').insert([
+                    const aiMessageInsert = await (supabase.from('messages') as any).insert([
                         {
                             chat_id: +aiState.get().chatId,
                             message: JSON.stringify([

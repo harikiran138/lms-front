@@ -33,8 +33,8 @@ export async function POST (req: NextRequest) {
         return new Response('Unauthorized', { status: 401 })
     }
 
-    const profile = await supabase
-        .from('profiles')
+    const profile = await (supabase
+        .from('profiles') as any)
         .select('*')
         .eq('id', fullUser?.data?.user?.id)
         .single()
@@ -55,8 +55,8 @@ export async function POST (req: NextRequest) {
         console.log(stripeCustomerID)
 
         // add stripe customer id to user
-        const update = await supabase
-            .from('profiles')
+        const update = await (supabase
+            .from('profiles') as any)
             .update({ stripeCustomerID })
             .match({ id: fullUser?.data.user?.id })
 
@@ -64,14 +64,14 @@ export async function POST (req: NextRequest) {
     }
 
     if (planId) {
-        const plan = await supabase
-            .from('plans')
+        const plan = await (supabase
+            .from('plans') as any)
             .select('*')
             .eq('plan_id', planId)
             .single()
 
-        const transaction = await supabase
-            .from('transactions')
+        const transaction = await (supabase
+            .from('transactions') as any)
             .insert({
                 amount: plan?.data?.price,
                 user_id: fullUser?.data.user?.id as any,
@@ -118,14 +118,14 @@ export async function POST (req: NextRequest) {
     }
 
     if (productId) {
-        const product = await supabase
-            .from('products')
+        const product = await (supabase
+            .from('products') as any)
             .select('*')
             .eq('product_id', productId)
             .single()
 
-        const transaction = await supabase
-            .from('transactions')
+        const transaction = await (supabase
+            .from('transactions') as any)
             .insert({
                 amount: product?.data.price,
                 user_id: fullUser?.data.user?.id as any,

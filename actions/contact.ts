@@ -33,8 +33,8 @@ export const createSupportTicket = async ({
         return createResponse('error', 'No issues were submitted', null)
     }
 
-    const { data: ticketData, error: ticketError } = await supabase
-        .from('tickets')
+    const { data: ticketData, error: ticketError } = await (supabase
+        .from('tickets') as any)
         .insert({
             title,
             description: `${description} \n\nIssues: ${issues.join(', ')}`,

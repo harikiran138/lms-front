@@ -13,8 +13,8 @@ export default async function PlansCheckoutPage({
 }) {
     const supabase = createClient()
 
-    const { data } = await supabase
-        .from('plans')
+    const { data } = await (supabase
+        .from('plans') as any)
         .select('*')
         .eq('plan_id', params.planId)
         .single()

@@ -12,8 +12,8 @@ export default async function SupportTicketPage() {
         throw new Error('Not authenticated')
     }
 
-    const ticketData = await supabase
-        .from('tickets')
+    const ticketData = await (supabase
+        .from('tickets') as any)
         .select('*')
         .eq('user_id', data?.user.id)
 

@@ -23,8 +23,8 @@ export default async function TeacherLessonPage ({
 }) {
     const supabase = createClient()
 
-    const lesson = await supabase
-        .from('lessons')
+    const lesson = await (supabase
+        .from('lessons') as any)
         .select(
             `*, 
       courses(*),
