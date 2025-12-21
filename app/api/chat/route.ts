@@ -23,10 +23,10 @@ export async function POST (req: Request) {
         async onFinish (event) {
             const lastUserMessage = messages[messages.length - 1]
 
-            const chat_id = chatId ?? (await supabase.from('chats').select('chat_id').eq('title', lastUserMessage.content).single()).data.chat_id
+            const chat_id = chatId ?? (await (supabase.from('chats') as any).select('chat_id').eq('title', lastUserMessage.content).single()).data?.chat_id
 
             console.log('chat_id', chat_id)
-            const messageInsert = await supabase.from('messages').insert([
+            const messageInsert = await (supabase.from('messages') as any).insert([
                 {
                     chat_id,
                     message: lastUserMessage.content,

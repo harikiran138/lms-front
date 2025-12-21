@@ -14,8 +14,8 @@ export default async function EditLessonPage({
     params: { courseId: string; lessonId: string }
 }) {
     const supabase = createClient()
-    const lesson = await supabase
-        .from('lessons')
+    const lesson: any = await (supabase
+        .from('lessons') as any)
         .select('*, courses(*),lessons_ai_tasks(*)')
         .eq('id', params.lessonId)
         .single()

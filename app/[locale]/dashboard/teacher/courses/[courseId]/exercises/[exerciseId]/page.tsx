@@ -26,8 +26,8 @@ export default async function ExercisePageTeacher({
     const t = await getI18n()
     const user = await supabase.auth.getUser()
 
-    const { data: exercise, error } = await supabase
-        .from('exercises')
+    const { data: exercise, error: exerciseError }: any = await (supabase
+        .from('exercises') as any)
         .select(`
             *,
             courses(*),
@@ -39,13 +39,13 @@ export default async function ExercisePageTeacher({
         .order('created_at', { referencedTable: 'exercise_messages', ascending: false })
         .single()
 
-    const usersData = await supabase
-        .from('profiles')
+    const usersData: any = await (supabase
+        .from('profiles') as any)
         .select('full_name, avatar_url')
         .in('id', exercise?.exercise_completions.map((completion) => completion.user_id))
 
-    if (error) {
-        console.error('Error fetching exercise:', error)
+    if (exerciseError) {
+        console.error('Error fetching exercise:', exerciseError)
         return <div>{t('errorLoadingExercise')}</div>
     }
 
@@ -75,8 +75,8 @@ export default async function ExercisePageTeacher({
         }))
     ]
 
-    const profile = await supabase
-        .from('profiles')
+    const profile: any = await (supabase
+        .from('profiles') as any)
         .select('full_name, avatar_url')
         .eq('id', user.data.user.id)
         .single()

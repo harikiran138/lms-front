@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
     const answers = body.answers
     const aiData = body.detailedAnswers
 
-    const { data, error } = await supabase.rpc('create_exam_submission', {
+    const { data, error } = await (supabase as any).rpc('create_exam_submission', {
         p_answers: answers,
         p_exam_id: examId,
         p_student_id: studentId,

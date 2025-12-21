@@ -31,7 +31,7 @@ export async function POST(req: Request) {
                     feedback: z.string().describe('Feedback for the student. Tell them what they did right and what they can improve, if needed.'),
                 }),
                 execute: async ({ feedback }) => {
-                    const save = await supabase.from('exercise_completions').insert(
+                    const save = await (supabase.from('exercise_completions') as any).insert(
                         {
                             exercise_id: body.exerciseId,
                             user_id: userData.data.user.id,
@@ -55,7 +55,7 @@ export async function POST(req: Request) {
         async onFinish({ text, toolResults }) {
             const lastMessage = body.messages[body.messages.length - 1]
 
-            const save = await supabase.from('exercise_messages').insert([
+            const save = await (supabase.from('exercise_messages') as any).insert([
                 {
                     exercise_id: body.exerciseId,
                     user_id: userData.data.user.id,
@@ -65,7 +65,7 @@ export async function POST(req: Request) {
             ])
 
             if (text && text.length > 0) {
-                const saveText = await supabase.from('exercise_messages').insert(
+                const saveText = await (supabase.from('exercise_messages') as any).insert(
                     {
                         exercise_id: body.exerciseId,
                         user_id: userData.data.user.id,
@@ -76,7 +76,7 @@ export async function POST(req: Request) {
             }
 
             if (toolResults[0].result) {
-                const saveResult = await supabase.from('exercise_messages').insert(
+                const saveResult = await (supabase.from('exercise_messages') as any).insert(
                     {
                         exercise_id: body.exerciseId,
                         user_id: userData.data.user.id,

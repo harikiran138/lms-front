@@ -18,14 +18,14 @@ export async function POST (req: NextRequest) {
     const score = body.score
     const overallFeedback = body.overall_feedback
 
-    const { error } = await supabase.rpc('save_exam_feedback', {
+    const { error } = await ((supabase as any).rpc('save_exam_feedback', {
         p_submission_id: submission_id,
         p_exam_id: examId,
         p_student_id: studentId,
         p_answers: answers,
         p_overall_feedback: overallFeedback,
         p_score: score
-    })
+    }))
 
     if (error != null) {
         console.error('Error updating feedback:', error.message)

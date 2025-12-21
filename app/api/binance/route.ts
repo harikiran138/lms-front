@@ -92,15 +92,15 @@ export async function POST (req: NextRequest) {
 
     console.log(fullUser)
 
-    const profile = await supabase
-        .from('profiles')
+    const profile: any = await (supabase
+        .from('profiles') as any)
         .select('*')
         .eq('id', fullUser?.data.user?.id)
         .single()
 
     try {
-        const productData = await supabase
-            .from('products')
+        const productData: any = await (supabase
+            .from('products') as any)
             .select('*, products_pricing ( id, price, currency ( code, id ) )')
             .eq('id', productId)
             .single()
@@ -109,8 +109,8 @@ export async function POST (req: NextRequest) {
 
         // console.log(total, '<----------- total')
 
-        const transaction = await supabase
-            .from('transactions')
+        const transaction = await (supabase
+            .from('transactions') as any)
             .insert({
                 amount: productData?.data?.price,
                 user_id: fullUser?.data.user?.id as any,

@@ -1,5 +1,6 @@
 import { BookIcon, ClipboardIcon, LayoutGridIcon } from 'lucide-react'
 import Link from 'next/link'
+import { redirect } from 'next/navigation'
 
 import {
     Breadcrumb,
@@ -22,7 +23,7 @@ export default async function CoursesAdminPage () {
     const user = await supabase.auth.getUser()
 
     if (user.error != null) {
-        throw new Error(user.error.message)
+        redirect('/auth/login')
     }
 
     const { data: products } = await supabase.from('products').select('*')
