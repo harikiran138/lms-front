@@ -1,6 +1,6 @@
 
 'use server'
-import { openai } from '@ai-sdk/openai'
+import { google } from '@ai-sdk/google'
 import { convertToCoreMessages, generateText, Message } from 'ai'
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
@@ -408,7 +408,7 @@ export async function actionButtonsActionLessons(data: { lessonId: number, messa
     let isApproved = false
 
     const result = await generateText({
-        model: openai('gpt-4o-mini-2024-07-18'),
+        model: google('gemini-1.5-flash'),
         messages: convertToCoreMessages(messages),
         temperature: 0.3,
         system: 'Evaluate the student last message. If the student answer is correct, mark the Lesson as completed. If the student answer is incorrect, mark the Lesson as not completed.',
