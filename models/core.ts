@@ -4,6 +4,7 @@ import mongoose, { Schema, Model, models } from 'mongoose';
 const UserSchema = new Schema({
   supabaseId: { type: String, unique: true, required: true }, // To link with auth
   email: { type: String, unique: true, required: true },
+  password: { type: String }, // For MongoDB auth
   fullName: String,
   username: { type: String, unique: true },
   avatarUrl: String,
