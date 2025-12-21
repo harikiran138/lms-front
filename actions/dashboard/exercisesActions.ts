@@ -1,5 +1,5 @@
 'use server'
-import { openai } from '@ai-sdk/openai'
+
 import { convertToCoreMessages, generateText, Message } from 'ai'
 import { revalidatePath } from 'next/cache'
 import { z } from 'zod'

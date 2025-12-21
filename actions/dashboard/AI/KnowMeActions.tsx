@@ -1,7 +1,7 @@
 'use server'
 import 'server-only'
 
-import { openai } from '@ai-sdk/openai'
+
 import { generateId } from 'ai'
 import { createAI, getMutableAIState, streamUI } from 'ai/rsc'
 import dayjs from 'dayjs'
