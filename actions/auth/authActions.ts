@@ -9,20 +9,10 @@ import { createResponse } from '@/utils/functions'
 import connectToDatabase from '@/lib/mongodb'
 import { User } from '@/models/core'
 
-const SECRET_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'default-secret-key-change-me';
-const key = new TextEncoder().encode(SECRET_KEY);
+import { createSession } from '@/lib/session'
 
-// Helper to create session
-async function createSession(userId: string, role: string) {
-  const expires = new Date(Date.now() + 24 * 60 * 60 * 1000); // 1 day
-  const session = await new SignJWT({ userId, role })
-    .setProtectedHeader({ alg: 'HS256' })
-    .setIssuedAt()
-    .setExpirationTime('24h')
-    .sign(key);
-  
-  cookies().set('session', session, { expires, httpOnly: true, sameSite: 'lax' }); // "secure" should be true in prod
-}
+// Removed local createSession logic
+
 
 export const checkConnection = async () => {
     try {
