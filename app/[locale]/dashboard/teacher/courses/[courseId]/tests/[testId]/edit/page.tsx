@@ -3,6 +3,7 @@
 import { getI18n } from '@/app/locales/server'
 import BreadcrumbComponent from '@/components/dashboards/student/course/BreadcrumbComponent'
 import TeacherTestForm from '@/components/form/TeacherTestForm'
+import ChatBox from '@/components/chatbox/ChatBox'
 import { createClient } from '@/utils/supabase/server'
 
 export default async function EditTestPage ({

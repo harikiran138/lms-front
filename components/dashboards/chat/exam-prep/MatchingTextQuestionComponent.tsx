@@ -52,9 +52,7 @@ function MatchingTextQuestionComponent ({ question, isFinished, form }: { questi
         const rightId = matchedPairs[leftId]
         const newPairs = { ...matchedPairs }
         const newReversePairs = { ...reverseMatchedPairs }
-        // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
         delete newPairs[leftId]
-        // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
         delete newReversePairs[rightId]
         setMatchedPairs(newPairs)
         setReverseMatchedPairs(newReversePairs)

@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/promise-function-async */
+
 'use client'
 import React, { cloneElement, type ReactNode, useState } from 'react'
 
