@@ -12,7 +12,19 @@ const UserSchema = new Schema({
   createdAt: { type: Date, default: Date.now },
 });
 
-export const User = models.User || mongoose.model('User', UserSchema);
+export interface IUser {
+  _id: mongoose.Types.ObjectId;
+  supabaseId: string;
+  email: string;
+  password?: string;
+  fullName?: string;
+  username?: string;
+  avatarUrl?: string;
+  role: 'admin' | 'teacher' | 'student';
+  createdAt: Date;
+}
+
+export const User = (models.User || mongoose.model<IUser>('User', UserSchema)) as Model<IUser>;
 
 // Course Category
 const CategorySchema = new Schema({
