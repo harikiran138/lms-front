@@ -5,6 +5,11 @@ import { getServerUserRole } from './getUserRole'
 import { Database } from './supabase'
 
 export async function updateSession(request: NextRequest, response: NextResponse) {
+    // MIGRATION: Bypassing Supabase Auth check to allow running without Supabase keys
+    // TODO: Re-implement Auth using MongoDB or a different provider
+    return response
+
+    /*
     const supabase = createServerClient<Database>(
         process.env.NEXT_PUBLIC_SUPABASE_URL!,
         process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
@@ -63,4 +68,5 @@ export async function updateSession(request: NextRequest, response: NextResponse
     }
 
     return response
+    */
 }
