@@ -9,7 +9,7 @@
         "next",
         "next/core-web-vitals",
         "plugin:react/recommended",
-        "standard-with-typescript",
+        "love",
         "plugin:react/jsx-runtime",
         "plugin:@typescript-eslint/recommended"
         // ,"prettier"
