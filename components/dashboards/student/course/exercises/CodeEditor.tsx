@@ -10,7 +10,7 @@ const CodeEditor = ({ initialCode, onChange }: {
             height="400px"
             defaultLanguage="javascript"
             defaultValue={initialCode}
-            onChange={(value) => onChange(value)}
+            onChange={(value) => { onChange(value) }}
             theme="vs-dark" // Puedes elegir entre varios temas disponibles
         />
     )

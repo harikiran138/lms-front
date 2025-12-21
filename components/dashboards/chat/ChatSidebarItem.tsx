@@ -96,7 +96,7 @@ export default function ChatSidebarItem ({
                 <Button
                     type='button'
                     variant='destructive'
-                    onClick={() => setIsUpdate(false)}
+                    onClick={() => { setIsUpdate(false) }}
                     className="w-full"
                 >
                     <CircleSlashedIcon className="h-5 w-5" />
@@ -178,7 +178,7 @@ export default function ChatSidebarItem ({
                             </AlertDialogContent>
                         </AlertDialog>
                         <button
-                            onClick={() => setIsUpdate(true)}
+                            onClick={() => { setIsUpdate(true) }}
                             className="flex gap-2 items-center"
                         >
                             <UpdateIcon className="h-5 w-5" />

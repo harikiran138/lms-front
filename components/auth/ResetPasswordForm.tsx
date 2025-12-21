@@ -125,10 +125,11 @@ export default function ResetPasswordForm({
                                                 />
                                                 <button
                                                     type="button"
-                                                    onClick={() =>
+                                                    onClick={() => {
                                                         setShowPassword(
                                                             !showPassword
                                                         )
+                                                    }
                                                     }
                                                 >
                                                     {!showPassword ? (

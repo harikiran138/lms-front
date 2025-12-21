@@ -3,7 +3,7 @@ import { generateId } from 'ai'
 import { useActions, useUIState } from 'ai/rsc'
 import { useState } from 'react'
 
-import { AIKnowMeResponseData, KnowMeChatAI } from '@/actions/dashboard/AI/KnowMeActions'
+import { type AIKnowMeResponseData, type KnowMeChatAI } from '@/actions/dashboard/AI/KnowMeActions'
 import { Button } from '@/components/ui/button'
 
 interface AIResponseDisplayProps {

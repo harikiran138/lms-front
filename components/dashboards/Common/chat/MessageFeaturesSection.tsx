@@ -13,7 +13,7 @@ import {
     TooltipTrigger,
 } from '@/components/ui/tooltip'
 
-import { ViewMode } from './MessageContentWrapper'
+import { type ViewMode } from './MessageContentWrapper'
 
 export default function MessageFeatureSection({
     viewMode,

@@ -11,7 +11,7 @@ const SuggestionButton = ({
 }) => (
     <div className="w-fit">
         <button
-            onClick={() => onSuggestionClick(title)}
+            onClick={() => { onSuggestionClick(title) }}
             className={
                 'flex flex-col flex-1 shrink-0 md:w-64 justify-between md:h-36 p-5 px-6 rounded-3xl transition group border hover:shadow-md hover:scale-105'
             }

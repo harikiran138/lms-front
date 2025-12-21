@@ -3,8 +3,8 @@ import { generateId } from 'ai'
 import { useActions, useUIState } from 'ai/rsc'
 import { useState } from 'react'
 
-import { ClientMessage } from '@/actions/dashboard/AI/ExamPreparationActions'
-import { TaskSandboxActions } from '@/actions/dashboard/AI/TaskSandboxActions'
+import { type ClientMessage } from '@/actions/dashboard/AI/ExamPreparationActions'
+import { type TaskSandboxActions } from '@/actions/dashboard/AI/TaskSandboxActions'
 import ChatLoadingSkeleton from '@/components/dashboards/chat/ChatLoadingSkeleton'
 import {
     ChatInput,
@@ -88,7 +88,7 @@ export default function TaskSandboxMessage() {
                     <TabsContent value="markdown">
                         <ChatInput
                             isLoading={isLoading}
-                            stop={() => setStop(true)}
+                            stop={() => { setStop(true) }}
                             callbackFunction={async (input) => {
                                 handleSubmit({
                                     input: input.content,
@@ -103,7 +103,7 @@ export default function TaskSandboxMessage() {
                     <TabsContent value="simple">
                         <ChatTextArea
                             isLoading={isLoading}
-                            stop={() => setStop(true)}
+                            stop={() => { setStop(true) }}
                             callbackFunction={async (input) => {
                                 handleSubmit({
                                     input: input.content,

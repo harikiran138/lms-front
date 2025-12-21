@@ -66,7 +66,7 @@ const QuestionCard = ({ question, answer, examIsReviewed }) => {
         <Card className="mb-4">
             <CardHeader
                 className={'cursor-pointer '}
-                onClick={() => setIsExpanded(!isExpanded)}
+                onClick={() => { setIsExpanded(!isExpanded) }}
             >
                 <div className="flex items-center justify-between">
                     <CardTitle className="text-lg">

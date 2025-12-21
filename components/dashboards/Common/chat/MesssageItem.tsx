@@ -1,5 +1,4 @@
-
-import { Message } from 'ai/react'
+import { type Message } from 'ai/react'
 import dayjs from 'dayjs'
 import { Check, Copy, Edit, Recycle, Trash } from 'lucide-react'
 
@@ -71,8 +70,7 @@ const MessageItem: React.FC<MessageItemProps> = ({
                         {isEditing ? (
                             <Textarea
                                 value={editedContent}
-                                onChange={(e) =>
-                                    setEditedContent(e.target.value)
+                                onChange={(e) => { setEditedContent(e.target.value) }
                                 }
                                 className="mb-2"
                                 rows={8}

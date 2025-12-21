@@ -1,5 +1,5 @@
 'use client'
-import { ColumnDef } from '@tanstack/react-table'
+import { type ColumnDef } from '@tanstack/react-table'
 
 import ConvertCourseToProduct from '@/components/dashboards/admin/course/ConvertCourseToProduct'
 import { Button } from '@/components/ui/button'

@@ -1,5 +1,5 @@
 'use client'
-import React from 'react'
+import type React from 'react'
 
 import { Checkbox } from '@/components/ui/checkbox'
 import { FormField } from '@/components/ui/form'

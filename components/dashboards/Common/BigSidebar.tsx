@@ -3,7 +3,7 @@ import { BookTextIcon, Building, Link, User } from 'lucide-react'
 
 import { Menubar, MenubarContent, MenubarItem, MenubarMenu, MenubarSeparator, MenubarSub, MenubarSubContent, MenubarSubTrigger, MenubarTrigger } from '@/components/ui/menubar'
 import { createClient } from '@/utils/supabase/server'
-import { Tables } from '@/utils/supabase/supabase'
+import { type Tables } from '@/utils/supabase/supabase'
 
 import SidebarLink from '../SidebarLink'
 

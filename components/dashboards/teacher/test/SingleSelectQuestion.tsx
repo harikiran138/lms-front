@@ -1,7 +1,7 @@
 'use client'
 
-import React from 'react'
-import { Control } from 'react-hook-form'
+import type React from 'react'
+import { type Control } from 'react-hook-form'
 
 import { Checkbox } from '@/components/ui/checkbox'
 import {

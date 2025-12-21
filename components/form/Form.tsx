@@ -1,13 +1,13 @@
 import { yupResolver } from '@hookform/resolvers/yup'
-import { PropsWithChildren } from 'react'
+import { type PropsWithChildren } from 'react'
 import {
     FormProvider,
     useForm,
     useFormContext,
-    UseFormReset,
-    UseFormSetValue
+    type UseFormReset,
+    type UseFormSetValue
 } from 'react-hook-form'
-import { ObjectSchema } from 'yup'
+import { type ObjectSchema } from 'yup'
 
 import { cn } from '@/utils'
 
@@ -49,8 +49,7 @@ export default function Form<
             {(onSubmit != null) && (
                 <form
                     noValidate
-                    onSubmit={handleSubmit((data) =>
-					  onSubmit(data, { reset, setValue })
+                    onSubmit={handleSubmit((data) => { onSubmit(data, { reset, setValue }) }
                     )}
                     className={className}
                 >

@@ -127,7 +127,7 @@ export default function NotificationsPage() {
                                     key={type.value}
                                     variant={activeFilter === type.value ? 'default' : 'outline'}
                                     className="w-full justify-start"
-                                    onClick={() => setActiveFilter(type.value)}
+                                    onClick={() => { setActiveFilter(type.value) }}
                                 >
                                     <type.icon className="mr-2 h-4 w-4" />
                                     {t(type.label)}
@@ -145,7 +145,7 @@ export default function NotificationsPage() {
                                 <Input
                                     placeholder={t('searchPlaceholder')}
                                     value={searchTerm}
-                                    onChange={(e) => setSearchTerm(e.target.value)}
+                                    onChange={(e) => { setSearchTerm(e.target.value) }}
                                     className="pl-8 pr-8"
                                 />
                                 {searchTerm && (
@@ -153,7 +153,7 @@ export default function NotificationsPage() {
                                         variant="ghost"
                                         size="sm"
                                         className="absolute right-1 top-1"
-                                        onClick={() => setSearchTerm('')}
+                                        onClick={() => { setSearchTerm('') }}
                                     >
                                         <X className="h-4 w-4" />
                                     </Button>
@@ -195,7 +195,7 @@ export default function NotificationsPage() {
                                             <Button
                                                 variant="ghost"
                                                 size="sm"
-                                                onClick={async () => await markAsRead(notification)}
+                                                onClick={async () => { await markAsRead(notification) }}
                                             >
                                                 {notification.read ? (
                                                     <>

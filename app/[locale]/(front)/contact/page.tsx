@@ -48,7 +48,7 @@ const ContactForm = () => {
     const onSubmit = async (data: FormValues) => {
         setIsSubmitting(true)
 
-        const contactFormId = process.env.NEXT_PUBLIC_CONTACT_FORM_ID!
+        const contactFormId = process.env.NEXT_PUBLIC_CONTACT_FORM_ID
         // Simulate API call
         const body = {
             'your-name': data.name,

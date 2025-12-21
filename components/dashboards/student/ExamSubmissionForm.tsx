@@ -23,10 +23,10 @@ import { Separator } from '@/components/ui/separator'
 import { useToast } from '@/components/ui/use-toast'
 import { createClient } from '@/utils/supabase/client'
 import {
-    FreeTextQuestion as FTQType,
-    MultipleChoiceQuestion as MCQType,
-    SingleSelectQuestion as SSQType,
-    StudentExamSubmitFormData,
+    type FreeTextQuestion as FTQType,
+    type MultipleChoiceQuestion as MCQType,
+    type SingleSelectQuestion as SSQType,
+    type StudentExamSubmitFormData,
 } from '@/utils/types'
 
 import FreeTextQuestionForm from '../teacher/test/FreeTextQuestion'

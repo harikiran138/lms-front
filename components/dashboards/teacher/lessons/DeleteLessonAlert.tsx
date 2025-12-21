@@ -1,4 +1,3 @@
-
 import { deleteLessonsAction } from '@/actions/dashboard/lessonsAction'
 
 import DeleteAlert from '../DeleteAlert'

@@ -88,8 +88,8 @@ export default function ChatBox({ instructions, profile }: ChatBoxProps) {
         },
     ]
 
-    const toggleChat = () => setIsChatOpen((prev) => !prev)
-    const toggleExpand = () => setIsExpanded((prev) => !prev)
+    const toggleChat = () => { setIsChatOpen((prev) => !prev) }
+    const toggleExpand = () => { setIsExpanded((prev) => !prev) }
 
     const scrollToBottom = () => {
         if (scrollAreaRef.current) {
@@ -271,12 +271,13 @@ export default function ChatBox({ instructions, profile }: ChatBoxProps) {
                                                                 key={index}
                                                                 variant="outline"
                                                                 className="text-left"
-                                                                onClick={() =>
+                                                                onClick={() => {
                                                                     handleQuickAccess(
                                                                         t(
                                                                             `quickAccess.${button.label}.text`
                                                                         )
                                                                     )
+                                                                }
                                                                 }
                                                             >
                                                                 <span className="mr-2">
@@ -313,31 +314,36 @@ export default function ChatBox({ instructions, profile }: ChatBoxProps) {
                                                         setEditedContent={
                                                             setEditedContent
                                                         }
-                                                        onEdit={() =>
+                                                        onEdit={() => {
                                                             handleEdit(
                                                                 message.id,
                                                                 message.content
                                                             )
                                                         }
-                                                        onSave={async () =>
+                                                        }
+                                                        onSave={async () => {
                                                             await handleSave(
                                                                 message.id
                                                             )
                                                         }
-                                                        onDelete={async () =>
+                                                        }
+                                                        onDelete={async () => {
                                                             await handleDelete(
                                                                 message.id
                                                             )
                                                         }
-                                                        onCopy={() =>
+                                                        }
+                                                        onCopy={() => {
                                                             handleCopy(
                                                                 message.content
                                                             )
                                                         }
-                                                        onRegenerate={() =>
+                                                        }
+                                                        onRegenerate={() => {
                                                             handleRegenerate(
                                                                 message.id
                                                             )
+                                                        }
                                                         }
                                                         isLoading={isLoading}
                                                         isCompleted={false}
@@ -383,13 +389,14 @@ export default function ChatBox({ instructions, profile }: ChatBoxProps) {
                             <CardFooter className="p-4 bg-background">
                                 <form
                                     className="flex w-full gap-2"
-                                    onSubmit={(e) =>
+                                    onSubmit={(e) => {
                                         handleSubmit(e, {
                                             body: {
                                                 message: input,
                                                 instructions,
                                             },
                                         })
+                                    }
                                     }
                                 >
                                     <Input

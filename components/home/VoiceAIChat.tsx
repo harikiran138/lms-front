@@ -78,7 +78,7 @@ export default function EnhancedVoiceAIChat() {
             stop()
         }
 
-        return () => clearInterval(interval)
+        return () => { clearInterval(interval) }
     }, [isListening])
 
     useEffect(() => {

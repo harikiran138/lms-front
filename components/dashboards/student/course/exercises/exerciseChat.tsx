@@ -1,6 +1,6 @@
 'use client'
 
-import { Message, useChat } from 'ai/react'
+import { type Message, useChat } from 'ai/react'
 import { useRouter } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 import { toast } from 'sonner'
@@ -236,17 +236,16 @@ export default function ExerciseChat({
                                         isEditing={editingMessageId === m.id}
                                         editedContent={editedContent}
                                         setEditedContent={setEditedContent}
-                                        onEdit={() =>
-                                            handleEditMessage(m.id, m.content)
+                                        onEdit={() => { handleEditMessage(m.id, m.content) }
                                         }
-                                        onSave={async () =>
-                                            await handleSaveEdit(m.id)
+                                        onSave={async () => { await handleSaveEdit(m.id) }
                                         }
-                                        onDelete={async () =>
+                                        onDelete={async () => {
                                             await handleDeleteMessage(
                                                 m.id,
                                                 m.content
                                             )
+                                        }
                                         }
                                         onCopy={() => {
                                             copy(m.content)
@@ -254,11 +253,12 @@ export default function ExerciseChat({
                                                 t('copiedToClipboard')
                                             )
                                         }}
-                                        onRegenerate={async () =>
+                                        onRegenerate={async () => {
                                             await regenerateAiMessage(
                                                 m.id,
                                                 m.content
                                             )
+                                        }
                                         }
                                         isLoading={isLoading}
                                         isCompleted={isCompleted}

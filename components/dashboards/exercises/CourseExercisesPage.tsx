@@ -20,7 +20,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from '@/components/ui/select'
-import { Tables } from '@/utils/supabase/supabase'
+import { type Tables } from '@/utils/supabase/supabase'
 
 import ExerciseCard from './ExerciseCard'
 
@@ -106,7 +106,7 @@ export default function CourseExercisesPage({
                     <Input
                         placeholder={t('searchPlaceholder')}
                         value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
+                        onChange={(e) => { setSearchTerm(e.target.value) }}
                         className="pl-8"
                     />
                 </div>
@@ -121,22 +121,22 @@ export default function CourseExercisesPage({
                         </DropdownMenuTrigger>
                         <DropdownMenuContent>
                             <DropdownMenuItem
-                                onClick={() => setDifficultyFilter(null)}
+                                onClick={() => { setDifficultyFilter(null) }}
                             >
                                 {t('allDifficulties')}
                             </DropdownMenuItem>
                             <DropdownMenuItem
-                                onClick={() => setDifficultyFilter('easy')}
+                                onClick={() => { setDifficultyFilter('easy') }}
                             >
                                 {t('easy')}
                             </DropdownMenuItem>
                             <DropdownMenuItem
-                                onClick={() => setDifficultyFilter('medium')}
+                                onClick={() => { setDifficultyFilter('medium') }}
                             >
                                 {t('medium')}
                             </DropdownMenuItem>
                             <DropdownMenuItem
-                                onClick={() => setDifficultyFilter('hard')}
+                                onClick={() => { setDifficultyFilter('hard') }}
                             >
                                 {t('hard')}
                             </DropdownMenuItem>
@@ -144,8 +144,7 @@ export default function CourseExercisesPage({
                     </DropdownMenu>
 
                     <Select
-                        onValueChange={(value) =>
-                            setSortBy(value as 'title' | 'difficulty')
+                        onValueChange={(value) => { setSortBy(value as 'title' | 'difficulty') }
                         }
                     >
                         <SelectTrigger className="w-[180px]">

@@ -5,7 +5,7 @@ import { useState } from 'react'
 
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { cn } from '@/utils'
-import { Tables } from '@/utils/supabase/supabase'
+import { type Tables } from '@/utils/supabase/supabase'
 
 import { Badge } from '../ui/badge'
 import { buttonVariants } from '../ui/button'

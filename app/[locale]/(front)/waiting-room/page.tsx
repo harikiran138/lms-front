@@ -29,7 +29,7 @@ const WaitingRoom = () => {
             })
         }, 1000)
 
-        return () => clearInterval(timer)
+        return () => { clearInterval(timer) }
     }, [onComplete])
 
     const minutes = Math.floor(waitTime / 60)

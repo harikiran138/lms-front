@@ -1,6 +1,6 @@
 // app/[locale]/client/layout.tsx
-import { Metadata } from 'next'
-import { ReactElement } from 'react'
+import { type Metadata } from 'next'
+import { type ReactElement } from 'react'
 
 import { I18nProviderClient } from '../locales/client'
 

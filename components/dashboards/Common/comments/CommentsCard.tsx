@@ -1,6 +1,6 @@
 'use client'
 
-import { User } from '@supabase/supabase-js'
+import { type User } from '@supabase/supabase-js'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
 import { Edit2, Flag, ThumbsUp } from 'lucide-react'
@@ -13,7 +13,7 @@ import CommentEditor from '@/components/dashboards/student/course/lessons/Commen
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
 import ViewMarkdown from '@/components/ui/markdown/ViewMarkdown'
-import { Tables } from '@/utils/supabase/supabase'
+import { type Tables } from '@/utils/supabase/supabase'
 
 dayjs.extend(relativeTime)
 
@@ -85,7 +85,7 @@ const CommentCard = ({
                                 <Button
                                     variant="ghost"
                                     size="sm"
-                                    onClick={() => setIsEditing(!isEditing)}
+                                    onClick={() => { setIsEditing(!isEditing) }}
                                 >
                                     <Edit2 className="w-3 h-3 mr-1" />
                                     {t('edit')}
@@ -103,7 +103,7 @@ const CommentCard = ({
                             comment_id={comment.id}
                             course_id={course_id}
                             parent_comment_id={comment.parent_comment_id}
-                            callback={() => setIsEditing(false)}
+                            callback={() => { setIsEditing(false) }}
                         />
                     ) : (
                         <ViewMarkdown markdown={comment.content} />
@@ -124,7 +124,7 @@ const CommentCard = ({
                         variant="ghost"
                         size="sm"
                         className="p-0 h-auto font-semibold"
-                        onClick={() => setShowReplyEditor(!showReplyEditor)}
+                        onClick={() => { setShowReplyEditor(!showReplyEditor) }}
                     >
                         {t('reply')}
                     </Button>
@@ -142,7 +142,7 @@ const CommentCard = ({
                             course_id={course_id}
                             lesson_id={comment.lesson_id}
                             parent_comment_id={comment.id}
-                            callback={() => setShowReplyEditor(false)}
+                            callback={() => { setShowReplyEditor(false) }}
                         />
                     </div>
                 )}
@@ -152,7 +152,7 @@ const CommentCard = ({
                             variant="ghost"
                             size="sm"
                             className="p-0 h-auto text-xs font-semibold text-gray-500"
-                            onClick={() => setShowReplies(!showReplies)}
+                            onClick={() => { setShowReplies(!showReplies) }}
                         >
                             {showReplies ? t('CommentCard.viewReplies') : t('CommentCard.viewReplies')}{' '}
                             ({replies.length})

@@ -20,7 +20,7 @@ const ChatWidget: React.FC = () => {
                     <div className="flex justify-between items-center mb-2">
                         <h2 className="text-lg font-semibold">Chat</h2>
                         <button
-                            onClick={() => setIsOpen(false)}
+                            onClick={() => { setIsOpen(false) }}
                             className="text-gray-500 hover:text-gray-900"
                         >
               ✕
@@ -37,7 +37,7 @@ const ChatWidget: React.FC = () => {
                         <input
                             type="text"
                             value={message}
-                            onChange={(e) => setMessage(e.target.value)}
+                            onChange={(e) => { setMessage(e.target.value) }}
                             className="flex-1 border rounded p-2"
                             placeholder="Type a message..."
                         />
@@ -51,7 +51,7 @@ const ChatWidget: React.FC = () => {
                 </div>
             ) : (
                 <button
-                    onClick={() => setIsOpen(true)}
+                    onClick={() => { setIsOpen(true) }}
                     className="bg-blue-500 text-white rounded-full w-16 h-16 flex items-center justify-center shadow-lg"
                 >
           💬

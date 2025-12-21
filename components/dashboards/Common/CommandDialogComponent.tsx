@@ -36,7 +36,7 @@ export function CommandDialogComponent () {
         }
 
         document.addEventListener('keydown', down)
-        return () => document.removeEventListener('keydown', down)
+        return () => { document.removeEventListener('keydown', down) }
     }, [])
 
     useEffect(() => {

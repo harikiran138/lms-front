@@ -186,8 +186,7 @@ export default function UserSignupForm({ redirect }: { redirect?: string }) {
                                         />
                                         <button
                                             type="button"
-                                            onClick={() =>
-                                                setShowPassword(!showPassword)
+                                            onClick={() => { setShowPassword(!showPassword) }
                                             }
                                         >
                                             {!showPassword ? (

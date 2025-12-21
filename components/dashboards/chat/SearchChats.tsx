@@ -16,7 +16,7 @@ import {
     CommandItem,
     CommandList,
 } from '@/components/ui/command'
-import { Tables } from '@/utils/supabase/supabase'
+import { type Tables } from '@/utils/supabase/supabase'
 
 import ChatCreationButton from './ChatCreationButton'
 import StudentCreateNewChat from './StudentCreateNewChat'

@@ -1,7 +1,6 @@
-
 import { Clock } from 'lucide-react'
 import Link from 'next/link'
-import React from 'react'
+import type React from 'react'
 
 import { Badge } from '@/components/ui/badge'
 import { buttonVariants } from '@/components/ui/button'

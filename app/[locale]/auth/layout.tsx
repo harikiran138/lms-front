@@ -1,4 +1,3 @@
-
 import { getI18n } from '@/app/locales/server'
 import Header from '@/components/Header'
 

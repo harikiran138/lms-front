@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 
-import { Tables } from '@/utils/supabase/supabase'
+import { type Tables } from '@/utils/supabase/supabase'
 
 export default function NotificationSidebarFilter () {
     const form = useForm()

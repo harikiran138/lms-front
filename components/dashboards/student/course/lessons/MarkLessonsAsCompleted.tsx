@@ -1,6 +1,7 @@
 'use client'
 import { CheckCheck, Loader } from 'lucide-react'
-import React, { useState } from 'react'
+import type React from 'react'
+import { useState } from 'react'
 import { toast } from 'sonner'
 
 import { markLessonAsCompleted } from '@/actions/dashboard/lessonsAction'

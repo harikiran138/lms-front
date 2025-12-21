@@ -13,7 +13,7 @@ import {
     SheetTitle,
     SheetTrigger
 } from '@/components/ui/sheet'
-import { Tables } from '@/utils/supabase/supabase'
+import { type Tables } from '@/utils/supabase/supabase'
 
 export default function DashboardHeaderSheet ({
     userRole
@@ -50,7 +50,7 @@ export default function DashboardHeaderSheet ({
                     <Link
                         className='flex items-center gap-2'
                         href={`/dashboard/${userRole}`}
-                        onClick={() => setIsSheetOpen(false)}
+                        onClick={() => { setIsSheetOpen(false) }}
                     >
                         <HomeIcon className="h-6 w-6" />
                         <span>Home</span>
@@ -58,7 +58,7 @@ export default function DashboardHeaderSheet ({
                     <Link
                         className='flex items-center gap-2'
                         href={`/dashboard/${userRole}/account`}
-                        onClick={() => setIsSheetOpen(false)}
+                        onClick={() => { setIsSheetOpen(false) }}
                     >
                         <User2 className="h-6 w-6" />
                         <span>Account</span>
@@ -66,7 +66,7 @@ export default function DashboardHeaderSheet ({
                     <Link
                         className='flex items-center gap-2'
                         href={`/dashboard/${userRole}/chat`}
-                        onClick={() => setIsSheetOpen(false)}
+                        onClick={() => { setIsSheetOpen(false) }}
                     >
                         <MessageCircleIcon className="h-6 w-6" />
                         <span>Chat</span>

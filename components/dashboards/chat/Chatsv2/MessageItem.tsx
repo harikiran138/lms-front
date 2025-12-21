@@ -1,4 +1,4 @@
-import { Message } from 'ai'
+import { type Message } from 'ai'
 import dayjs from 'dayjs'
 import { Copy, Edit, RefreshCw } from 'lucide-react'
 import { toast } from 'sonner'

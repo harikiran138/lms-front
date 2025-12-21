@@ -1,7 +1,7 @@
 'use client'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import React from 'react'
+import type React from 'react'
 
 import { useScopedI18n } from '@/app/locales/client'
 import { cn } from '@/utils'

@@ -1,4 +1,4 @@
-import { Control } from 'react-hook-form'
+import { type Control } from 'react-hook-form'
 
 import { useScopedI18n } from '@/app/locales/client'
 import {
@@ -17,7 +17,7 @@ import {
     SelectValue,
 } from '@/components/ui/select'
 
-import { courseSchemaType } from './teacher/course/CreateCourse'
+import { type courseSchemaType } from './teacher/course/CreateCourse'
 
 export default function SelectStatus({
     control,

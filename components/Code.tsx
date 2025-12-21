@@ -41,7 +41,7 @@ export default function Code ({ code }: { code: string }) {
     const copy = async () => {
         await navigator?.clipboard?.writeText(code)
         setIcon(CheckIcon)
-        setTimeout(() => setIcon(CopyIcon), 2000)
+        setTimeout(() => { setIcon(CopyIcon) }, 2000)
     }
 
     return (

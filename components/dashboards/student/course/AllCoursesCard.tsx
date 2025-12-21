@@ -1,4 +1,3 @@
-
 import { CarouselItem } from '@/components/ui/carousel'
 
 import CarouselCourse from './CarouselCourse'

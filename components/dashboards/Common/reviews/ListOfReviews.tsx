@@ -2,7 +2,7 @@ import dayjs from 'dayjs'
 
 import { getScopedI18n } from '@/app/locales/server'
 import { createClient } from '@/utils/supabase/server'
-import { Tables } from '@/utils/supabase/supabase'
+import { type Tables } from '@/utils/supabase/supabase'
 
 import ReviewCard from '../../cards/ReviewCard'
 import ReviewForm from './ReviewForm'

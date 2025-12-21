@@ -16,7 +16,7 @@ export default function PasswordComponent () {
             />
             <button
                 type='button'
-                onClick={() => setShowPassword(!showPassword)}
+                onClick={() => { setShowPassword(!showPassword) }}
             >
                 {!showPassword ? (
                     <EyeIcon />

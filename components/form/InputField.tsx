@@ -1,8 +1,9 @@
 // @ts-nocheck
 'use client'
 
-import React, { useState } from 'react'
-import { FieldValues, useFieldArray } from 'react-hook-form'
+import type React from 'react'
+import { useState } from 'react'
+import { type FieldValues, useFieldArray } from 'react-hook-form'
 
 import {
     Card,
@@ -14,7 +15,7 @@ import {
 } from '@/components/ui/card'
 
 import { Button } from '../ui/button'
-import { IFormField } from './FormBuilder'
+import { type IFormField } from './FormBuilder'
 
 const inputClass =
 	'flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50'
@@ -249,7 +250,7 @@ function TrueFalse ({
                         {...register(`formFields[${index}].value`)}
                         type="checkbox"
                         checked={isCorrect}
-                        onChange={() => setIsCorrect(!isCorrect)}
+                        onChange={() => { setIsCorrect(!isCorrect) }}
                     />
                 </div>
             </CardContent>
@@ -304,8 +305,7 @@ function MultipleChoises ({
                                 <input
                                     className={inputClass}
                                     value={inputType}
-                                    onChange={(e) =>
-									  setInputType(e.target.value)
+                                    onChange={(e) => { setInputType(e.target.value) }
                                     }
                                     type="text"
                                 />
@@ -383,7 +383,7 @@ function MultipleChoisesOptions ({
                     optionIndex + 1
                 }`}
                 value={inputType}
-                onChange={(e) => setInputType(e.target.value)}
+                onChange={(e) => { setInputType(e.target.value) }}
                 className={inputClass}
             />
             <div className="flex flex-row gap-2">
@@ -395,7 +395,7 @@ function MultipleChoisesOptions ({
 
                     type="checkbox"
                     checked={isCorrect}
-                    onChange={() => setIsCorrect(!isCorrect)}
+                    onChange={() => { setIsCorrect(!isCorrect) }}
                 />
             </div>
             {/* ... handle errors */}

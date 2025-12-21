@@ -20,7 +20,7 @@ const ToggleableSection = ({
     cardContentClassName?: string
 }) => {
     const [isExpanded, setIsExpanded] = useState(isOpen)
-    const toggle = () => setIsExpanded(!isExpanded)
+    const toggle = () => { setIsExpanded(!isExpanded) }
 
     return (
         <Card className={cn('mt-8', cardClassName)}>

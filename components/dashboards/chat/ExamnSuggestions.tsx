@@ -4,7 +4,7 @@ import { generateId } from 'ai'
 import { useActions, useUIState } from 'ai/rsc'
 import { useState } from 'react'
 
-import { AI } from '@/actions/dashboard/AI/ExamPreparationActions'
+import { type AI } from '@/actions/dashboard/AI/ExamPreparationActions'
 import { Badge } from '@/components/ui/badge'
 import { cn } from '@/utils'
 
@@ -74,7 +74,7 @@ export default function ExamnSuggestions ({
 
                     <button
                         key={index}
-                        onClick={async () => await onSuggestionClick(suggestion)}
+                        onClick={async () => { await onSuggestionClick(suggestion) }}
                         className={
                             cn(
                                 'flex flex-col flex-1 shrink-0 justify-between p-5 px-6 rounded-3xl transition group border',

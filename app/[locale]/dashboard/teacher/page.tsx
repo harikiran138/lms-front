@@ -1,4 +1,3 @@
-
 import { getI18n } from '@/app/locales/server'
 import BreadcrumbComponent from '@/components/dashboards/student/course/BreadcrumbComponent'
 import EnhancedTeacherDashboard from '@/components/dashboards/teacher/enhanced-teacher-dashboard'

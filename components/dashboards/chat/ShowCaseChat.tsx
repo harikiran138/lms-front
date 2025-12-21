@@ -86,7 +86,7 @@ export default function ShowCaseChat({ systemPrompt }: FreeChatProps) {
                         >
                             <MarkdowEditorInput
                                 isLoading={isLoading}
-                                stop={() => stop()}
+                                stop={() => { stop() }}
                                 callbackFunction={(message) => {
                                     // handleSendMessage(message.content)
                                     console.log(message)
@@ -101,7 +101,7 @@ export default function ShowCaseChat({ systemPrompt }: FreeChatProps) {
                         >
                             <ChatTextArea
                                 isLoading={isLoading}
-                                stop={() => stop()}
+                                stop={() => { stop() }}
                                 callbackFunction={async (message) => {
                                     // handleSendMessage(message.content)
                                     console.log(message)

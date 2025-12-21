@@ -164,7 +164,7 @@ const EnhancedCourseStudentPage: React.FC<EnhancedCourseStudentPageProps> = ({
                     <Input
                         placeholder={t('dashboard.student.CourseStudentPage.searchPlaceholder')}
                         value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
+                        onChange={(e) => { setSearchTerm(e.target.value) }}
                         className="w-full"
                     />
                     <Search className="absolute right-3 top-3 h-4 w-4 text-gray-500" />
@@ -188,8 +188,7 @@ const EnhancedCourseStudentPage: React.FC<EnhancedCourseStudentPageProps> = ({
                 </Select>
                 <Button
                     variant="outline"
-                    onClick={() =>
-                        setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc')
+                    onClick={() => { setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc') }
                     }
                 >
                     <ArrowUpDown className="h-4 w-4 mr-2" />

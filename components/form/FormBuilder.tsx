@@ -62,7 +62,7 @@ const FormBuilder: React.FC<FormBuilderProps> = ({ initialFields, children }) =>
 
             <select
                 value={inputType}
-                onChange={(e) => setInputType(e.target.value)}
+                onChange={(e) => { setInputType(e.target.value) }}
                 className="block w-full p-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
             >
                 <option value="free_text">Fill In</option>

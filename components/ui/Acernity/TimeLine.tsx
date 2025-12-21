@@ -5,7 +5,8 @@ import {
     useScroll,
     useTransform,
 } from 'framer-motion'
-import React, { useEffect, useRef, useState } from 'react'
+import type React from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import { useScopedI18n } from '@/app/locales/client'
 

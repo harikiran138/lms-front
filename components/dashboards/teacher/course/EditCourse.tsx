@@ -11,7 +11,7 @@ import { Input, Select } from '@/components/form/Form'
 import { Skeleton } from '@/components/ui/skeleton'
 import { selectClassNames } from '@/utils/const'
 import { createClient } from '@/utils/supabase/client'
-import { Tables } from '@/utils/supabase/supabase'
+import { type Tables } from '@/utils/supabase/supabase'
 
 import ButtonSubmitDashbaord from '../../ButtonSubmitDashbaord'
 import StateMessages from '../../StateMessages'

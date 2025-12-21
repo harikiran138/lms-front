@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/promise-function-async */
 'use client'
-import React, { cloneElement, ReactNode, useState } from 'react'
+import React, { cloneElement, type ReactNode, useState } from 'react'
 
 import MessageFeaturesSection from '@/components/dashboards/Common/chat/MessageFeaturesSection'
 

@@ -4,11 +4,11 @@ import { Stripe } from 'stripe'
 
 import { createClient } from '@/utils/supabase/server'
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!)
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
 
 // Stripe will give you a webhook secret when setting up webhooks.
 // well get this later and add it to the .env.local file when testing
-const webhookSecret = process.env.STRIPE_WEBHOOKS_ENDPOINT_SECRET!
+const webhookSecret = process.env.STRIPE_WEBHOOKS_ENDPOINT_SECRET
 
 export async function POST (req: Request) {
     const payload = await req.text()

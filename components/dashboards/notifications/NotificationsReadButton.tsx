@@ -4,7 +4,7 @@ import { useState } from 'react'
 
 import { notificationUpdate } from '@/actions/dashboard/notificationsActions'
 import { cn } from '@/utils'
-import { Tables } from '@/utils/supabase/supabase'
+import { type Tables } from '@/utils/supabase/supabase'
 
 export default function NotificationsReadButton ({
     notification,

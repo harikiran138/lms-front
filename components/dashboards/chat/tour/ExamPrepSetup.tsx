@@ -113,7 +113,7 @@ function ChatTourExamPrepChat () {
         <TooltipProvider>
             <Tooltip>
                 <TooltipTrigger>
-                    <Button onClick={() => setIsOpen(true)}>
+                    <Button onClick={() => { setIsOpen(true) }}>
                         {t('guidedTutorial')}
                         <InfoIcon
                             className='ml-2'

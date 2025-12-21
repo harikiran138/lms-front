@@ -4,9 +4,9 @@ import { useActions, useAIState, useUIState } from 'ai/rsc'
 import { useEffect, useState } from 'react'
 
 import {
-    AI,
-    ClientMessage,
-    UIState,
+    type AI,
+    type ClientMessage,
+    type UIState,
 } from '@/actions/dashboard/AI/ExamPreparationActions'
 import {
     studentInsertChatMessage,
@@ -192,7 +192,7 @@ export default function ExamPrepChat({ chatId }: { chatId?: number }) {
                         >
                             <ChatInput
                                 isLoading={isLoading}
-                                stop={() => setStop(true)}
+                                stop={() => { setStop(true) }}
                                 callbackFunction={handleInput}
                                 isTemplatePresent={true}
                             />
@@ -203,7 +203,7 @@ export default function ExamPrepChat({ chatId }: { chatId?: number }) {
                         >
                             <ChatTextArea
                                 isLoading={isLoading}
-                                stop={() => setStop(true)}
+                                stop={() => { setStop(true) }}
                                 callbackFunction={handleInput}
                             />
                         </TabsContent>

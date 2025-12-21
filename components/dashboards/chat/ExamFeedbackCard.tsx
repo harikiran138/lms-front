@@ -18,8 +18,8 @@ import {
 } from '@/components/ui/card'
 
 import ConfettiMessage from './exam-prep/ConfettiMessage'
-import { FeedbackComponent, FeedbackComponentProps } from './exam-prep/MatchingTextQuestionComponent'
-import { MultipleChoiceQuestionInterface, QuizFeedback } from './exam-prep/MultipleChoiceQuestionComponent'
+import { FeedbackComponent, type FeedbackComponentProps } from './exam-prep/MatchingTextQuestionComponent'
+import { type MultipleChoiceQuestionInterface, QuizFeedback } from './exam-prep/MultipleChoiceQuestionComponent'
 
 interface basicQuestion {
     question: string

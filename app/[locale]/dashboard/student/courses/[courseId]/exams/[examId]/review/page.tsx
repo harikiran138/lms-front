@@ -1,4 +1,3 @@
-
 import { redirect } from 'next/navigation'
 
 import { getI18n } from '@/app/locales/server'

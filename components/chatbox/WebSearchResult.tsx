@@ -59,7 +59,7 @@ export default function WebSearchResult({ toolName, result }: ToolInvocationProp
                         variant="ghost"
                         size="sm"
                         className="w-full text-left justify-between"
-                        onClick={() => setIsExpanded(!isExpanded)}
+                        onClick={() => { setIsExpanded(!isExpanded) }}
                     >
                         {isExpanded ? t('hideResults') : t('showResults')}
                         {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}

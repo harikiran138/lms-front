@@ -3,7 +3,7 @@ import { CheckCircleIcon, CircleIcon, XCircleIcon } from 'lucide-react'
 import { useState } from 'react'
 
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
-import { MultipleChoiceQuestion as typeMultipleChoiceQuestion } from '@/utils/types'
+import { type MultipleChoiceQuestion as typeMultipleChoiceQuestion } from '@/utils/types'
 
 export default function MultipleChoiceQuestionComponent ({ question, isFinished, form }: { question: typeMultipleChoiceQuestion, isFinished: boolean, form: any }) {
     const [selectedOptions, setSelectedOptions] = useState<string[]>([])

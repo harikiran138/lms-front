@@ -5,7 +5,7 @@ import { cookies } from 'next/headers'
 
 import Comment from '@/components/ui/comments/Comment'
 import { createClient } from '@/utils/supabase/server'
-import { Database } from '@/utils/supabase/supabase'
+import { type Database } from '@/utils/supabase/supabase'
 
 export default async function CommentsList ({
     where

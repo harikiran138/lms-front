@@ -2,7 +2,7 @@ import { Label } from '@radix-ui/react-label'
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Textarea } from '@/components/ui/textarea'
-import { FreeTextQuestion } from '@/utils/types'
+import { type FreeTextQuestion } from '@/utils/types'
 
 export default function FreeTextQuestionComponent ({
     question,

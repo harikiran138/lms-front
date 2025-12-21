@@ -1,6 +1,6 @@
 import { generateId } from 'ai'
 
-import { Tables } from '@/utils/supabase/supabase'
+import { type Tables } from '@/utils/supabase/supabase'
 
 import ChatLessonTask from './ChatLessonTask'
 

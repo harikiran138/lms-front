@@ -126,7 +126,7 @@ function StudentOnBoardingButton () {
                     <Button
                         variant="ghost"
                         className="hidden md:block"
-                        onClick={() => setIsOpen(true)}
+                        onClick={() => { setIsOpen(true) }}
                     >
                         <InfoIcon size={24} />
                     </Button>

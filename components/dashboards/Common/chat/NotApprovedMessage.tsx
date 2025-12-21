@@ -1,5 +1,5 @@
 import { X } from 'lucide-react'
-import React from 'react'
+import type React from 'react'
 
 import { useScopedI18n } from '@/app/locales/client'
 import { Button } from '@/components/ui/button'

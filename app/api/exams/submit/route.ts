@@ -1,6 +1,6 @@
 import { google } from '@ai-sdk/google'
 import { generateObject } from 'ai'
-import { NextRequest, NextResponse } from 'next/server'
+import { type NextRequest, NextResponse } from 'next/server'
 import { z } from 'zod'
 
 import { createClient } from '@/utils/supabase/server'

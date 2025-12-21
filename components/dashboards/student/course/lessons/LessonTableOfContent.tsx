@@ -1,5 +1,6 @@
 'use client'
-import React, { useEffect } from 'react'
+import type React from 'react'
+import { useEffect } from 'react'
 
 import { useScopedI18n } from '@/app/locales/client'
 import { extractHeadings } from '@/utils/functions'
@@ -37,7 +38,7 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({
             if (element) observer.observe(element)
         })
 
-        return () => observer.disconnect()
+        return () => { observer.disconnect() }
     }, [headings])
 
     return (

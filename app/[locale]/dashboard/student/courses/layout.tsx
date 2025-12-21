@@ -1,4 +1,3 @@
-
 export const metadata = {
     title: 'Courses Layout',
     description: 'Layout for courses'

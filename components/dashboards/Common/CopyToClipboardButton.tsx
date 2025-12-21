@@ -21,7 +21,7 @@ export default function CopyToClipboardButton({ content }: CopyToClipboardButton
                     title: 'Copied!',
                 })
                 setIsCopied(true)
-                setTimeout(() => setIsCopied(false), 4000)
+                setTimeout(() => { setIsCopied(false) }, 4000)
             })
             .catch(error => {
                 console.error('Failed to copy!', error)

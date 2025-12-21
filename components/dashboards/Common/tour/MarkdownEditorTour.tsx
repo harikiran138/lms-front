@@ -224,7 +224,7 @@ function MarkdownEditorTourButton () {
         <TooltipProvider>
             <Tooltip>
                 <TooltipTrigger>
-                    <Button onClick={() => setIsOpen(true)}>
+                    <Button onClick={() => { setIsOpen(true) }}>
                         <InfoIcon
                             className=''
                             size={24}

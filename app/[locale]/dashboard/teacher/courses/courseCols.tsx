@@ -1,6 +1,6 @@
 'use client'
 
-import { ColumnDef } from '@tanstack/react-table'
+import { type ColumnDef } from '@tanstack/react-table'
 import { Edit, Eye, MoreHorizontal } from 'lucide-react'
 import Link from 'next/link'
 

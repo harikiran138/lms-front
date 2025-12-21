@@ -2,7 +2,7 @@
 import { useAIState, useUIState } from 'ai/rsc'
 import { useEffect } from 'react'
 
-import { KnowMeChatAI } from '@/actions/dashboard/AI/KnowMeActions'
+import { type KnowMeChatAI } from '@/actions/dashboard/AI/KnowMeActions'
 import useScrollAnchor from '@/utils/hooks/useScrollAnchor'
 
 export default function KnowMeChat() {

@@ -3,7 +3,7 @@
 import dayjs from 'dayjs'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Clock } from 'lucide-react'
-import React from 'react'
+import type React from 'react'
 
 import { useScopedI18n } from '@/app/locales/client'
 import ToggleableSection from '@/components/dashboards/student/course/lessons/ToggleableSection'

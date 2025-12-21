@@ -28,7 +28,7 @@ export default function SaveCode({
             </div>
             <div className="flex items-center space-x-2">
                 <Button
-                    onClick={async () => await saveCode(code)}
+                    onClick={async () => { await saveCode(code) }}
                     variant="secondary"
                     size="sm"
                     disabled={isCompleted || isLoading}

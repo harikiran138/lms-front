@@ -1,7 +1,7 @@
 // @ts-nocheck
 'use client'
 
-import { ColumnDef } from '@tanstack/react-table'
+import { type ColumnDef } from '@tanstack/react-table'
 import { CheckCircleIcon, ClockIcon, MoreHorizontal } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
@@ -14,7 +14,7 @@ import {
     DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu'
 import { DataTableColumnHeader } from '@/components/ui/Table/DataTableColumnHeader'
-import { Tables } from '@/utils/supabase/supabase'
+import { type Tables } from '@/utils/supabase/supabase'
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.

@@ -1,8 +1,8 @@
 import { createAISDKTools } from '@agentic/ai-sdk'
 import { TavilyClient } from '@agentic/tavily'
 import { openai } from '@ai-sdk/openai'
-import { convertToCoreMessages, Message, streamText } from 'ai'
-import { NextRequest, NextResponse } from 'next/server'
+import { convertToCoreMessages, type Message, streamText } from 'ai'
+import { type NextRequest, NextResponse } from 'next/server'
 import { z } from 'zod'
 
 import { createClient } from '@/utils/supabase/server'

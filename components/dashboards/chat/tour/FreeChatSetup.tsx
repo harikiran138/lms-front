@@ -115,7 +115,7 @@ function ChatTourFreeChat () {
                 <TooltipTrigger asChild>
                     <Button
                         className='w-fit'
-                        onClick={() => setIsOpen(true)}
+                        onClick={() => { setIsOpen(true) }}
                     >
                         {t('title')}
                         <InfoIcon

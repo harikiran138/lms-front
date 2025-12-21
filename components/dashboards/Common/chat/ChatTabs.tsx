@@ -1,4 +1,4 @@
-import React from 'react'
+import type React from 'react'
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 
@@ -32,7 +32,7 @@ const ChatTabs: React.FC<ChatTabsProps> = ({
             <TabsContent value="markdown">
                 <ChatInput
                     isLoading={isLoading}
-                    stop={() => setStop(true)}
+                    stop={() => { setStop(true) }}
                     callbackFunction={async (input) => {
                         await callBack(data)
                     }}
@@ -41,7 +41,7 @@ const ChatTabs: React.FC<ChatTabsProps> = ({
             <TabsContent value="simple">
                 <ChatTextArea
                     isLoading={isLoading}
-                    stop={() => setStop(true)}
+                    stop={() => { setStop(true) }}
                     callbackFunction={async (input) => {
                         await callBack(data)
                     }}

@@ -9,7 +9,8 @@ import {
     Trash,
 } from 'lucide-react'
 import Link from 'next/link'
-import React, { useState } from 'react'
+import type React from 'react'
+import { useState } from 'react'
 import { toast } from 'sonner'
 
 import { deleteMessagesAndCompletitionOfExerciseAction } from '@/actions/dashboard/exercisesActions'

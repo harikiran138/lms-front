@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { type NextRequest, NextResponse } from 'next/server'
 
 import { markExerciseCompletedAction, saveUserSubmissionAction } from '@/actions/dashboard/exercisesActions'
 import { createClient } from '@/utils/supabase/server'

@@ -1,4 +1,4 @@
-import { Message } from 'ai'
+import { type Message } from 'ai'
 import { useRef } from 'react'
 
 import ChatLoadingSkeleton from '@/components/dashboards/chat/ChatLoadingSkeleton'

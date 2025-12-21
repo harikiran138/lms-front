@@ -1,4 +1,4 @@
-import { SupabaseClient } from '@supabase/supabase-js'
+import { type SupabaseClient } from '@supabase/supabase-js'
 import { BookTextIcon } from 'lucide-react'
 
 import { getScopedI18n } from '@/app/locales/server'

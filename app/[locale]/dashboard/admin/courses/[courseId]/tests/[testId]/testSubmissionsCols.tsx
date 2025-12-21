@@ -1,5 +1,5 @@
 'use client'
-import { ColumnDef } from '@tanstack/react-table'
+import { type ColumnDef } from '@tanstack/react-table'
 import { MoreHorizontal } from 'lucide-react'
 import Link from 'next/link'
 

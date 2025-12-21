@@ -199,11 +199,12 @@ export default function TestSubmissionReview({
                             <Textarea
                                 className="mt-2 min-h-[120px]"
                                 value={answer?.feedback || ''}
-                                onChange={(e) =>
+                                onChange={(e) => {
                                     handleFeedbackChange(
                                         answer.answer_id,
                                         e.target.value
                                     )
+                                }
                                 }
                             />
                         </div>
@@ -245,11 +246,12 @@ export default function TestSubmissionReview({
                 <Textarea
                     className="mt-2 min-h-[120px]"
                     value={feedback.overall_feedback || ''}
-                    onChange={(e) =>
+                    onChange={(e) => {
                         setfeedback((prevfeedback) => ({
                             ...prevfeedback,
                             overall_feedback: e.target.value,
                         }))
+                    }
                     }
                 />
             </div>

@@ -1,5 +1,5 @@
 'use client'
-import { generateId, Message as MessageType } from 'ai'
+import { generateId, type Message as MessageType } from 'ai'
 import { useRef } from 'react'
 
 import { useScopedI18n } from '@/app/locales/client'

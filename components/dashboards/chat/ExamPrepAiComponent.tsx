@@ -4,14 +4,14 @@ import { useActions, useUIState } from 'ai/rsc'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
-import { AI } from '@/actions/dashboard/AI/ExamPreparationActions'
+import { type AI } from '@/actions/dashboard/AI/ExamPreparationActions'
 import { Button } from '@/components/ui/button'
 import { Form } from '@/components/ui/form'
-import { FreeTextQuestion, MultipleChoiceQuestion as typeMultipleChoiceQuestion, SingleSelectQuestion as typeSingleSelectQuestion } from '@/utils/types'
+import { type FreeTextQuestion, type MultipleChoiceQuestion as typeMultipleChoiceQuestion, type SingleSelectQuestion as typeSingleSelectQuestion } from '@/utils/types'
 
 import ChatLoadingSkeleton from './ChatLoadingSkeleton'
 import FreeTextQuestionComponent from './exam-prep/FreeTextQuestionComponent'
-import MatchingTextQuestionComponent, { MatchingTextQuestion } from './exam-prep/MatchingTextQuestionComponent'
+import MatchingTextQuestionComponent, { type MatchingTextQuestion } from './exam-prep/MatchingTextQuestionComponent'
 import MultipleChoiceQuestionComponent from './exam-prep/MultipleChoiceQuestionComponent'
 import TrueFalseQuestion from './exam-prep/TrueFalseQuestion'
 

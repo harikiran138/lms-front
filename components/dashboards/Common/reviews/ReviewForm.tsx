@@ -26,7 +26,7 @@ import {
 } from '@/components/ui/select'
 import { Textarea } from '@/components/ui/textarea'
 import { toast } from '@/components/ui/use-toast'
-import { Tables } from '@/utils/supabase/supabase'
+import { type Tables } from '@/utils/supabase/supabase'
 
 const FormSchema = z.object({
     rating: z.string().nonempty({ message: 'Please select a rating.' }),

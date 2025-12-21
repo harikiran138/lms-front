@@ -34,9 +34,9 @@ export default function CheckoutStripeWrapper({
             }),
         })
             .then(async (res) => await res.json())
-            .then((data) => setClientSecret(data.clientSecret))
-            .catch((err) => console.log(err))
-            .finally(() => setIsLoading(false))
+            .then((data) => { setClientSecret(data.clientSecret) })
+            .catch((err) => { console.log(err) })
+            .finally(() => { setIsLoading(false) })
     }, [])
 
     const appearance = {

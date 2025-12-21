@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { SingleSelectQuestion as typeSingleSelectQuestion } from '@/utils/types'
+import { type SingleSelectQuestion as typeSingleSelectQuestion } from '@/utils/types'
 export default function TrueFalseQuestion ({ question, isFinished, form }: { question: typeSingleSelectQuestion, isFinished: boolean, form: any }) {
     return (
         <Card key={question.id}>

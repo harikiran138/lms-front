@@ -1,11 +1,11 @@
 'use client'
 import { useChat } from '@ai-sdk/react'
-import { generateId, Message } from 'ai'
+import { generateId, type Message } from 'ai'
 import { useState } from 'react'
 
 import { studentCreateNewChat, studentInsertChatMessage } from '@/actions/dashboard/chatActions'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { Tables } from '@/utils/supabase/supabase'
+import { type Tables } from '@/utils/supabase/supabase'
 
 import { ChatTextArea } from '../../Common/chat/chat'
 import MarkdownEditorTour from '../../Common/tour/MarkdownEditorTour'
@@ -120,7 +120,7 @@ export default function ChatContent({
                     >
                         <MarkdowEditorInput
                             isLoading={isLoading}
-                            stop={() => stop()}
+                            stop={() => { stop() }}
                             callbackFunction={(message) => {
                                 handleSendMessage(message.content)
                             }}
@@ -133,7 +133,7 @@ export default function ChatContent({
                     >
                         <ChatTextArea
                             isLoading={isLoading}
-                            stop={() => stop()}
+                            stop={() => { stop() }}
                             callbackFunction={async (message) => {
                                 handleSendMessage(message.content)
                             }}

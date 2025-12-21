@@ -6,7 +6,7 @@ import { studentCreateNewChatAndRedirect } from '@/actions/dashboard/chatActions
 import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
 import { useToast } from '@/components/ui/use-toast'
-import { Tables } from '@/utils/supabase/supabase'
+import { type Tables } from '@/utils/supabase/supabase'
 
 export default function ChatCreationButton ({
     chatType,

@@ -2,7 +2,7 @@
 import { Dumbbell } from 'lucide-react'
 
 import { useI18n } from '@/app/locales/client'
-import { Tables } from '@/utils/supabase/supabase'
+import { type Tables } from '@/utils/supabase/supabase'
 
 import ItemCard from './ItemCard'
 

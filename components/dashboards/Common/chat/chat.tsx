@@ -1,10 +1,10 @@
 'use client'
-import { generateId, Message as MessageType, ToolInvocation } from 'ai'
+import { generateId, type Message as MessageType, type ToolInvocation } from 'ai'
 import { CheckCircle } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 
 import { useScopedI18n } from '@/app/locales/client'
-import Confetti, { ConfettiRef } from '@/components/magicui/confetti'
+import Confetti, { type ConfettiRef } from '@/components/magicui/confetti'
 import { Button } from '@/components/ui/button'
 import { ForwardRefEditor } from '@/components/ui/markdown/ForwardRefEditor'
 import ViewMarkdown from '@/components/ui/markdown/ViewMarkdown'
@@ -303,7 +303,7 @@ function ChatTextArea({
                     rows={7}
                     id='textarea'
                     value={value}
-                    onChange={(e) => setValue(e.target.value)}
+                    onChange={(e) => { setValue(e.target.value) }}
                 />
                 {
                     buttonChildren || (

@@ -115,7 +115,7 @@ function MatchingTextQuestionComponent ({ question, isFinished, form }: { questi
                                 {matchedPairs[item.id] && (
                                     <Button
                                         variant='destructive'
-                                        onClick={() => handleDeselect(item.id)}
+                                        onClick={() => { handleDeselect(item.id) }}
                                         disabled={isFinished}
                                     >
                     Cancel
@@ -133,7 +133,7 @@ function MatchingTextQuestionComponent ({ question, isFinished, form }: { questi
                                     getBackgroundColor(item, 'right'),
                                     'flex gap-4 items-center justify-between py-4 h-12'
                                 )}
-                                onClick={() => !isItemDisabled(item, 'right') && handleRightClick(item)}
+                                onClick={() => { !isItemDisabled(item, 'right') && handleRightClick(item) }}
                             >
                                 <span>{item.text}</span>
                                 {Object.keys(matchedPairs).map((leftId) => (

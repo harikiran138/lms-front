@@ -6,7 +6,7 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
-import { KnowMeChatAI, QuestionToFulfill } from '@/actions/dashboard/AI/KnowMeActions'
+import { type KnowMeChatAI, type QuestionToFulfill } from '@/actions/dashboard/AI/KnowMeActions'
 import { Button } from '@/components/ui/button'
 import {
     Form,

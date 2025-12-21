@@ -31,7 +31,7 @@ export default function EditMessage({
             <TabsContent value="markdown">
                 <ChatInput
                     isLoading={isLoading}
-                    stop={() => setStop(true)}
+                    stop={() => { setStop(true) }}
                     text={text}
                     callbackFunction={async (input) => {
                         if (stop) {
@@ -62,7 +62,7 @@ export default function EditMessage({
             <TabsContent value="simple">
                 <ChatTextArea
                     isLoading={isLoading}
-                    stop={() => setStop(true)}
+                    stop={() => { setStop(true) }}
                     text={text}
                     callbackFunction={async (input) => {
                         if (stop) {

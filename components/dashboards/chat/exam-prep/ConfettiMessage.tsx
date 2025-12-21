@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react'
 
-import Confetti, { ConfettiRef } from '@/components/magicui/confetti'
+import Confetti, { type ConfettiRef } from '@/components/magicui/confetti'
 
 export default function ConfettiMessage() {
     const confettiRef = useRef<ConfettiRef>(null)

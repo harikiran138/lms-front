@@ -5,7 +5,7 @@ import {
     CaretSortIcon,
     EyeNoneIcon
 } from '@radix-ui/react-icons'
-import { Column } from '@tanstack/react-table'
+import { type Column } from '@tanstack/react-table'
 
 import { Button } from '@/components/ui/button'
 import {
@@ -57,20 +57,20 @@ export function DataTableColumnHeader<TData, TValue> ({
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="start">
                     <DropdownMenuItem
-                        onClick={() => column.toggleSorting(false)}
+                        onClick={() => { column.toggleSorting(false) }}
                     >
                         <ArrowUpIcon className="mr-2 h-3.5 w-3.5 text-muted-foreground/70" />
             Asc
                     </DropdownMenuItem>
                     <DropdownMenuItem
-                        onClick={() => column.toggleSorting(true)}
+                        onClick={() => { column.toggleSorting(true) }}
                     >
                         <ArrowDownIcon className="mr-2 h-3.5 w-3.5 text-muted-foreground/70" />
             Desc
                     </DropdownMenuItem>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem
-                        onClick={() => column.toggleVisibility(false)}
+                        onClick={() => { column.toggleVisibility(false) }}
                     >
                         <EyeNoneIcon className="mr-2 h-3.5 w-3.5 text-muted-foreground/70" />
             Hide
