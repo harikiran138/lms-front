@@ -1,10 +1,11 @@
+'use client'
 import { useScopedI18n } from '@/app/locales/client'
 
 import SuggestionsContainer from '../Common/chat/SuggestionsContainer'
 
 const EmptyChatState: React.FC<{
     onSuggestionClick: (suggestion: string) => void
-}> = async ({
+}> = ({
     onSuggestionClick,
 }) => {
     const t = useScopedI18n('EmptyChatState')
