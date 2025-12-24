@@ -1,3 +1,5 @@
+'use client';
+
 import { motion } from 'framer-motion';
 import { GlassCard } from '../ui/GlassCard';
 import { Bell, LayoutGrid, Activity, ChevronDown, ArrowUpRight } from 'lucide-react';

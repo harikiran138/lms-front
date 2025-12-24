@@ -1,0 +1,3 @@
+module.exports=[48018,a=>{a.v({className:"outfit_43d50961-module__KOAtAG__className"})},43533,a=>{"use strict";var b=a.i(25639),c=a.i(48018);let d={className:c.default.className,style:{fontFamily:"'Outfit', 'Outfit Fallback'",fontStyle:"normal"}};function e({children:a}){return(0,b.jsx)("html",{lang:"en",children:(0,b.jsx)("body",{className:d.className,children:a})})}null!=c.default.variable&&(d.variable=c.default.variable),a.s(["default",()=>e,"metadata",0,{title:"Apple Finch - Liquid Education",description:"Reimagining education with liquid glass aesthetics."}],43533)}];
+
+//# sourceMappingURL=%5Broot-of-the-server%5D__57730bc6._.js.map

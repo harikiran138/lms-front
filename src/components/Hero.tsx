@@ -1,5 +1,7 @@
 
 
+'use client';
+
 import { motion } from 'framer-motion';
 import { GlassCard } from '../ui/GlassCard';
 import { ArrowRight, Play } from 'lucide-react';

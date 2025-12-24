@@ -1,5 +1,7 @@
 
 
+'use client';
+
 import { LiquidGlass } from '../ui/LiquidGlass';
 import { BookOpen, GraduationCap, Library, Users, Award, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
