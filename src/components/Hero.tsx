@@ -10,10 +10,11 @@ const Hero = () => {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Background Liquid Blobs */}
+      {/* Background Liquid Blobs */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-red-200/30 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob" style={{ backgroundColor: 'rgb(var(--pastel-pink) / 0.3)' }} />
-        <div className="absolute top-0 right-1/4 w-96 h-96 bg-blue-200/30 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000" style={{ backgroundColor: 'rgb(var(--pastel-purple) / 0.3)' }} />
-        <div className="absolute -bottom-32 left-1/3 w-96 h-96 bg-teal-200/30 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-4000" style={{ backgroundColor: 'rgb(var(--pastel-blue) / 0.3)' }} />
+        {/* Subtle white glow instead of colored blobs */}
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-white/10 rounded-full blur-3xl animate-blob" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-white/10 rounded-full blur-3xl animate-blob animation-delay-2000" />
       </div>
 
       <div className="container mx-auto px-6 relative z-10 grid md:grid-cols-2 gap-12 items-center">

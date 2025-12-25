@@ -47,7 +47,7 @@ const Collage = () => {
     ];
 
     return (
-        <section id="education" className="py-32 relative overflow-hidden bg-white/30 backdrop-blur-sm">
+        <section id="education" className="py-32 relative overflow-hidden">
              {/* Decorative background element */}
              <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-teal-100/40 rounded-full blur-3xl -z-10 translate-y-1/2 -translate-x-1/3" />
 

@@ -6,16 +6,20 @@ import { Bell, LayoutGrid, Activity, ChevronDown, ArrowUpRight } from 'lucide-re
 
 const DashboardPreview = () => {
   return (
-    <section className="py-24 bg-[#E0D9F6] relative overflow-hidden font-sans">
+    <section className="py-24 relative overflow-hidden">
       {/* Background decorations matching the reference */}
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-purple-200/50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-indigo-200/50 rounded-full blur-3xl translate-y-1/2 -translate-x-1/4 pointer-events-none" />
 
-      <div className="container mx-auto px-4 lg:px-8">
-        <div className="grid md:grid-cols-12 gap-8 items-start">
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="flex flex-col lg:flex-row gap-8 items-start justify-center">
           
-          {/* Mobile App Preview Side */}
-          <div className="md:col-span-4 lg:col-span-3 flex justify-center md:sticky md:top-24">
+          {/* Mobile App Preview Side - Mindo Style */}
+            <motion.div 
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                className="w-full lg:w-[380px] bg-white/20 backdrop-blur-3xl rounded-[3rem] p-6 shadow-2xl border border-white/40"
+            >
              <motion.div 
                initial={{ y: 50, opacity: 0 }}
                whileInView={{ y: 0, opacity: 1 }}
@@ -77,7 +81,7 @@ const DashboardPreview = () => {
                    </div>
                 </div>
              </motion.div>
-          </div>
+          </motion.div>
 
           {/* Desktop Dashboard Side */}
           <div className="md:col-span-8 lg:col-span-9 space-y-8">
