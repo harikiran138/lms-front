@@ -8,14 +8,23 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Outfit', 'sans-serif'],
+        sans: ['var(--font-inter)', 'var(--font-outfit)', 'sans-serif'],
+        serif: ['var(--font-playfair)', 'serif'],
       },
       colors: {
+        school: {
+          primary: 'var(--school-primary)',
+          secondary: 'var(--school-secondary)',
+          text: 'var(--school-text)',
+          accent: 'var(--school-accent)',
+          glass: 'var(--school-glass)',
+        },
         pastel: {
-          pink: '#fad0c4',
-          blue: '#a1c4fd',
-          purple: '#c2e9fb',
-          teal: '#b2fefa', 
+          pink: '#EBE2C8',
+          blue: '#9BB2CD',
+          purple: '#B8A6C9',
+          teal: '#7A6F9B',
+          yellow: '#FFFBEB',
         },
       },
       animation: {

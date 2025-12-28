@@ -1,5 +1,11 @@
 {
   "/_global-error/page": "/_global-error",
   "/_not-found/page": "/_not-found",
-  "/page": "/"
+  "/academics/page": "/academics",
+  "/admissions/page": "/admissions",
+  "/contact/page": "/contact",
+  "/news/page": "/news",
+  "/page": "/",
+  "/school/page": "/school",
+  "/services/page": "/services"
 }

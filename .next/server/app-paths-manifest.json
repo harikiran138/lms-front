@@ -1,5 +1,11 @@
 {
   "/_global-error/page": "app/_global-error/page.js",
   "/_not-found/page": "app/_not-found/page.js",
-  "/page": "app/page.js"
+  "/academics/page": "app/academics/page.js",
+  "/admissions/page": "app/admissions/page.js",
+  "/contact/page": "app/contact/page.js",
+  "/news/page": "app/news/page.js",
+  "/page": "app/page.js",
+  "/school/page": "app/school/page.js",
+  "/services/page": "app/services/page.js"
 }

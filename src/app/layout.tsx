@@ -1,12 +1,14 @@
 import type { Metadata } from 'next';
-import { Outfit } from 'next/font/google';
-import './globals.css';
+import { Inter, Playfair_Display } from "next/font/google";
+import "./globals.css";
+import ThemeSwitcher from "@/components/ThemeSwitcher";
 
-const outfit = Outfit({ subsets: ['latin'] });
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" });
 
-export const metadata: Metadata = {
-  title: 'Apple Finch - Liquid Education',
-  description: 'Reimagining education with liquid glass aesthetics.',
+export const metadata = {
+  title: "St. Ignatius College School",
+  description: "Empowering minds and inspiring futures.",
 };
 
 export default function RootLayout({
@@ -16,7 +18,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={outfit.className}>{children}</body>
+      <body className={`${inter.variable} ${playfair.variable} font-sans`}>
+        {children}
+        <ThemeSwitcher />
+      </body>
     </html>
   );
 }
