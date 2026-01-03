@@ -1,10 +1,4 @@
-:HL["/_next/static/chunks/36cdd6f07b78e3df.css","style"]
+:HL["/_next/static/chunks/ee66eead45ec0ccd.css","style"]
 :HL["/_next/static/media/2a65768255d6b625-s.p.d19752fb.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/_next/static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
-:HL["/service_academic.png","image"]
-:HL["/service_personal.png","image"]
-:HL["/service_resources.png","image"]
-:HL["/school_hero_extracted.png","image"]
-:HL["/news_heroes.png","image"]
-:HL["/news_heritage.png","image"]
-0:{"buildId":"qxrEx8snRnH5SKCQYvwCk","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
+0:{"buildId":"i4-5evwycRXU4opXUTXZZ","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
