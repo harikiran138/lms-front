@@ -1,16 +1,19 @@
 import Link from 'next/link';
+import VideoBackground from './VideoBackground';
 
 export default function AdmissionsBanner() {
   return (
-    <section className="bg-school-primary relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
+    <section className="relative overflow-hidden">
+      {/* Video Background */}
+      <VideoBackground opacity={0.6} />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center relative z-10">
         <div className="max-w-3xl mx-auto">
-          <h2 className="font-serif text-3xl md:text-5xl text-school-text mb-8 leading-tight">
+          <h2 className="font-serif text-3xl md:text-5xl text-white font-bold mb-8 leading-tight" style={{ textShadow: '0 3px 6px rgba(0, 0, 0, 0.5)' }}>
             Join Our Welcoming Community through St. Ignatius College School Admissions
           </h2>
           <Link
             href="#"
-            className="inline-block bg-school-text text-white px-8 py-3 rounded-full font-medium hover:bg-gray-800 transition-colors"
+            className="inline-block bg-white text-gray-900 px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition-colors shadow-lg"
           >
             Learn More
           </Link>

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import VideoBackground from './VideoBackground';
 
 const services = [
   {
@@ -20,15 +21,18 @@ const services = [
 
 export default function StudentServices() {
   return (
-    <section className="py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 relative overflow-hidden">
+      {/* Video Background */}
+      <VideoBackground opacity={0.5} />
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex justify-between items-end mb-12">
-            <h2 className="font-serif text-3xl md:text-4xl text-school-text max-w-md">
+            <h2 className="font-serif text-3xl md:text-4xl text-white font-bold max-w-md" style={{ textShadow: '0 3px 6px rgba(0, 0, 0, 0.4)' }}>
                 Comprehensive Student Services
             </h2>
              <Link
             href="/services"
-            className="hidden md:block px-6 py-2 border border-school-text/50 text-school-text rounded-full text-sm font-medium hover:bg-school-text hover:text-school-secondary transition-colors"
+            className="hidden md:block px-6 py-2 liquid-glass-strong text-white rounded-full text-sm font-bold hover:bg-white/30 transition-colors shadow-lg"
           >
             Learn More
           </Link>
@@ -54,7 +58,7 @@ export default function StudentServices() {
          <div className="mt-8 md:hidden text-center">
              <Link
             href="#"
-            className="inline-block px-6 py-2 border border-school-text rounded-full text-sm font-medium hover:bg-school-text hover:text-white transition-colors"
+            className="inline-block px-6 py-2 liquid-glass-strong text-white rounded-full text-sm font-bold hover:bg-white/30 transition-colors shadow-lg"
           >
             Learn More
           </Link>

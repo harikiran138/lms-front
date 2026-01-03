@@ -2,38 +2,38 @@
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { GlassCard } from '@/ui/GlassCard';
+import VideoBackground from './VideoBackground';
 
 export default function SchoolHero() {
   return (
     <section className="relative w-full pt-12 pb-20 md:pt-20 md:pb-32 overflow-hidden">
-      {/* Background Blobs */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-pastel-purple rounded-full blur-3xl opacity-50 mix-blend-multiply filter animate-blob"></div>
-          <div className="absolute top-0 right-1/4 w-96 h-96 bg-pastel-yellow rounded-full blur-3xl opacity-50 mix-blend-multiply filter animate-blob animation-delay-2000"></div>
-          <div className="absolute -bottom-32 left-1/3 w-96 h-96 bg-pastel-pink rounded-full blur-3xl opacity-50 mix-blend-multiply filter animate-blob animation-delay-4000"></div>
-      </div>
+      {/* Video Background */}
+      <VideoBackground opacity={0.5} />
+      
+      {/* Additional Gradient Overlay for depth */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/30 -z-[5] pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
           
           {/* Text Content */}
           <div className="md:w-1/2 order-2 md:order-1 relative z-10">
-            <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold text-school-text leading-tight mb-6">
-              Empowering Minds, <span className="text-school-primary">Inspiring Futures</span>
+            <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6" style={{ textShadow: '0 4px 8px rgba(0, 0, 0, 0.5)' }}>
+              Empowering Minds, <span className="text-white drop-shadow-lg">Inspiring Futures</span>
             </h1>
-            <p className="text-lg md:text-xl text-school-text/80 mb-8 max-w-lg leading-relaxed">
+            <p className="text-lg md:text-xl text-white font-semibold mb-8 max-w-lg leading-relaxed" style={{ textShadow: '0 2px 4px rgba(0, 0, 0, 0.4)' }}>
               Welcome to St. Ignatius College School. Get ready for another year of learning and growing together. We're excited to have you here!
             </p>
              <div className="flex flex-wrap gap-4">
               <Link 
                 href="/school" 
-                className="bg-school-primary text-white px-8 py-4 rounded-full font-medium hover:bg-school-accent transition-all shadow-lg hover:shadow-xl hover:-translate-y-1"
+                className="bg-white text-gray-900 px-8 py-4 rounded-full font-bold hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl hover:-translate-y-1"
               >
                 About School
               </Link>
               <Link 
                 href="/contact" 
-                className="bg-white/60 backdrop-blur-sm border border-white/80 text-school-text px-8 py-4 rounded-full font-medium hover:bg-white transition-all shadow-sm hover:shadow-md hover:-translate-y-1"
+                className="liquid-glass-strong text-white px-8 py-4 rounded-full font-bold hover:bg-white/30 transition-all shadow-lg hover:shadow-xl hover:-translate-y-1"
               >
                 Contact Us
               </Link>
@@ -54,12 +54,12 @@ export default function SchoolHero() {
               
               {/* Floating Event Card */}
               <div className="absolute -bottom-10 -left-4 md:-left-12 max-w-[280px] z-20">
-                  <GlassCard className="!bg-white/80 !backdrop-blur-xl border-white/40">
-                    <p className="text-sm font-medium uppercase tracking-wider mb-2 text-school-accent">July 9</p>
-                    <h3 className="font-serif text-xl md:text-2xl mb-4 leading-tight text-school-text">
+                  <GlassCard className="!bg-white/90 !backdrop-blur-xl border-white/60 shadow-2xl">
+                    <p className="text-sm font-bold uppercase tracking-wider mb-2 text-gray-900">July 9</p>
+                    <h3 className="font-serif text-xl md:text-2xl mb-4 leading-tight text-gray-900 font-bold">
                     PA Day for Elementary and Secondary Schools
                     </h3>
-                    <Link href="#" className="flex items-center text-sm font-medium hover:text-school-accent transition-colors">
+                    <Link href="#" className="flex items-center text-sm font-bold text-gray-900 hover:text-gray-700 transition-colors">
                     Discover Event <ArrowRight size={16} className="ml-2" />
                     </Link>
                   </GlassCard>
