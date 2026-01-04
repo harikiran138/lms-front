@@ -2,35 +2,43 @@
   "app": {
     "[project]/Desktop/github/lms-front/src/app/_not-found/page": [
       "static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2",
-      "static/media/2a65768255d6b625-s.p.d19752fb.woff2"
+      "static/media/2a65768255d6b625-s.p.d19752fb.woff2",
+      "static/media/9a800f173b8d9e8f-s.p.ea25be69.woff2"
     ],
     "[project]/Desktop/github/lms-front/src/app/academics/page": [
       "static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2",
-      "static/media/2a65768255d6b625-s.p.d19752fb.woff2"
+      "static/media/2a65768255d6b625-s.p.d19752fb.woff2",
+      "static/media/9a800f173b8d9e8f-s.p.ea25be69.woff2"
     ],
     "[project]/Desktop/github/lms-front/src/app/admissions/page": [
       "static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2",
-      "static/media/2a65768255d6b625-s.p.d19752fb.woff2"
+      "static/media/2a65768255d6b625-s.p.d19752fb.woff2",
+      "static/media/9a800f173b8d9e8f-s.p.ea25be69.woff2"
     ],
     "[project]/Desktop/github/lms-front/src/app/contact/page": [
       "static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2",
-      "static/media/2a65768255d6b625-s.p.d19752fb.woff2"
+      "static/media/2a65768255d6b625-s.p.d19752fb.woff2",
+      "static/media/9a800f173b8d9e8f-s.p.ea25be69.woff2"
     ],
     "[project]/Desktop/github/lms-front/src/app/news/page": [
       "static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2",
-      "static/media/2a65768255d6b625-s.p.d19752fb.woff2"
+      "static/media/2a65768255d6b625-s.p.d19752fb.woff2",
+      "static/media/9a800f173b8d9e8f-s.p.ea25be69.woff2"
     ],
     "[project]/Desktop/github/lms-front/src/app/page": [
       "static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2",
-      "static/media/2a65768255d6b625-s.p.d19752fb.woff2"
+      "static/media/2a65768255d6b625-s.p.d19752fb.woff2",
+      "static/media/9a800f173b8d9e8f-s.p.ea25be69.woff2"
     ],
     "[project]/Desktop/github/lms-front/src/app/school/page": [
       "static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2",
-      "static/media/2a65768255d6b625-s.p.d19752fb.woff2"
+      "static/media/2a65768255d6b625-s.p.d19752fb.woff2",
+      "static/media/9a800f173b8d9e8f-s.p.ea25be69.woff2"
     ],
     "[project]/Desktop/github/lms-front/src/app/services/page": [
       "static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2",
-      "static/media/2a65768255d6b625-s.p.d19752fb.woff2"
+      "static/media/2a65768255d6b625-s.p.d19752fb.woff2",
+      "static/media/9a800f173b8d9e8f-s.p.ea25be69.woff2"
     ]
   },
   "appUsingSizeAdjust": true,

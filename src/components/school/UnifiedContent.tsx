@@ -1,130 +1,126 @@
 'use client';
 import Link from 'next/link';
-import { ArrowRight, Box, Globe, ShieldCheck, Zap } from 'lucide-react';
+import { Search, MapPin, Phone, Instagram, ArrowRight, ArrowUpRight } from 'lucide-react';
 
 export default function UnifiedContent() {
   return (
-    <section className="relative w-full min-h-screen pt-32 pb-20 overflow-hidden" id="home">
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div className="w-full">
+      
+      {/* 1. HERO SECTION */}
+      <section className="relative h-screen w-full p-4 md:p-6 flex items-center justify-center">
+        {/* Background Image Container */}
+        <div className="absolute inset-0 z-0">
+           <img src="/akina-hero.png" alt="Alps" className="w-full h-full object-cover" />
+        </div>
         
-        {/* FreightX Style Hero Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-40">
-          
-          {/* Main Headline Block */}
-          <div className="lg:col-span-8 bg-zinc-950/80 backdrop-blur-md border border-white/10 rounded-3xl p-10 flex flex-col justify-between min-h-[500px] relative overflow-hidden group">
-            <div className="absolute top-0 right-0 p-32 bg-[#FF4D00]/10 rounded-full blur-3xl -mr-16 -mt-16 transition-all duration-500 group-hover:bg-[#FF4D00]/20"></div>
-            
-            <div className="relative z-10">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#FF4D00]/10 text-[#FF4D00] text-sm font-bold uppercase tracking-wider mb-8 border border-[#FF4D00]/20">
-                <span className="w-2 h-2 rounded-full bg-[#FF4D00] animate-pulse"></span>
-                Next Gen Logistics
+        {/* Glass Overlay Frame */}
+        <div className="relative z-10 w-full h-full rounded-[3rem] border border-white/30 bg-white/5 backdrop-blur-sm flex flex-col justify-between p-8 md:p-12 overflow-hidden shadow-2xl">
+           
+           {/* Top Bar */}
+           <div className="flex justify-between items-center text-white">
+              <div className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center">
+                 <span className="text-xs">•••</span>
               </div>
-              <h1 className="font-sans text-5xl md:text-7xl font-bold text-white leading-[0.9] tracking-tight mb-6">
-                MOVING <br/>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/50">THE WORLD</span> <br/>
-                FORWARD.
-              </h1>
-            </div>
-
-            <div className="relative z-10 flex flex-wrap gap-4 mt-10">
-              <Link 
-                href="/contact" 
-                className="bg-[#FF4D00] text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-[#ff6a2b] transition-all flex items-center gap-2 group/btn"
-              >
-                Get Started
-                <ArrowRight size={20} className="group-hover/btn:translate-x-1 transition-transform" />
-              </Link>
-              <Link 
-                href="#services" 
-                className="bg-zinc-900 text-white border border-zinc-700 px-8 py-4 rounded-full font-bold text-lg hover:bg-zinc-800 transition-all"
-              >
-                Our Services
-              </Link>
-            </div>
-          </div>
-
-          {/* Right Column Stats & Info */}
-          <div className="lg:col-span-4 flex flex-col gap-6">
-            
-            {/* Stat Card 1 */}
-            <div className="flex-1 bg-zinc-900/80 backdrop-blur-md border border-white/10 rounded-3xl p-8 hover:border-[#FF4D00]/50 transition-colors group">
-              <div className="bg-zinc-800 w-12 h-12 rounded-2xl flex items-center justify-center mb-6 text-white group-hover:bg-[#FF4D00] group-hover:text-white transition-colors">
-                <Globe size={24} />
+              <div className="text-center">
+                 <h1 className="font-serif text-xl tracking-widest uppercase">AKINA</h1>
+                 <p className="text-[10px] tracking-[0.2em] opacity-70 uppercase">Hotel</p>
               </div>
-              <h3 className="text-4xl font-bold text-white mb-2">150+</h3>
-              <p className="text-zinc-400 font-medium">Countries Served Globally</p>
-            </div>
+              <button className="px-5 py-2 rounded-full border border-white/30 text-xs hover:bg-white/10 transition-colors uppercase tracking-wider">
+                 Find tips
+              </button>
+           </div>
 
-            {/* Stat Card 2 */}
-            <div className="flex-1 bg-zinc-900/80 backdrop-blur-md border border-white/10 rounded-3xl p-8 hover:border-[#FF4D00]/50 transition-colors group">
-              <div className="bg-zinc-800 w-12 h-12 rounded-2xl flex items-center justify-center mb-6 text-white group-hover:bg-[#FF4D00] group-hover:text-white transition-colors">
-                <Box size={24} />
+           {/* Center Content */}
+           <div className="text-center">
+              <h2 className="text-4xl md:text-6xl text-white font-medium mb-6 drop-shadow-md">Trip to the Alps</h2>
+              <button className="px-8 py-3 bg-white/20 backdrop-blur-md text-white rounded-full text-sm hover:bg-white/30 transition-colors border border-white/20">
+                 view trip selection
+              </button>
+           </div>
+
+           {/* Bottom Bar */}
+           <div className="flex flex-wrap gap-4 justify-between items-center bg-black/20 backdrop-blur-md rounded-full px-6 py-4 border border-white/10 text-white text-xs md:text-sm">
+              <div className="flex items-center gap-2">
+                 <Phone size={14} className="opacity-70"/> <span>093 556 788</span>
               </div>
-              <h3 className="text-4xl font-bold text-white mb-2">24/7</h3>
-              <p className="text-zinc-400 font-medium">Real-time Tracking Support</p>
+              <div className="hidden md:flex gap-6 opacity-80">
+                 <span className="flex items-center gap-1"><Instagram size={14}/> akina_trips</span>
+                 <span className="flex items-center gap-1"><MapPin size={14}/> akina.ss.trips</span>
+              </div>
+              <div className="flex items-center gap-3">
+                 <span>view more about</span>
+                 <div className="w-2 h-2 rounded-full bg-white animate-pulse"></div>
+                 <span className="uppercase font-serif tracking-widest">AKINA</span>
+              </div>
+           </div>
+        </div>
+      </section>
+
+      {/* 2. ABOUT US SECTION */}
+      <section className="bg-[#FFF5F5] py-20 px-4 md:px-6">
+        <h3 className="text-center text-black font-medium text-xl mb-12">About Us</h3>
+        
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+           {/* Purple Card */}
+           <div className="bg-[#7B7BC4] rounded-[2.5rem] p-4 md:p-6 flex flex-col md:flex-row gap-6 items-center shadow-lg hover:shadow-xl transition-shadow duration-500">
+              <div className="w-full md:w-1/2 h-64 md:h-full rounded-[2rem] overflow-hidden">
+                 <img src="/akina-about.png" alt="Grenoble" className="w-full h-full object-cover" />
+              </div>
+              <div className="w-full md:w-1/2 text-white p-4">
+                 <h4 className="text-2xl font-medium mb-4 leading-tight">Our hotel is located<br/>in Grenoble</h4>
+                 <p className="text-[11px] leading-relaxed opacity-90 mb-6">
+                    It is a cozy and comfortable place, combining modernity with a peaceful atmosphere. The rooms have everything you need for a pleasant stay, and the windows offer views of the mountains and the city.
+                 </p>
+                 <div className="text-[10px] opacity-60">
+                    There are many different interesting things to do among these mountains.
+                 </div>
+              </div>
+           </div>
+
+           {/* Right Info Block */}
+           <div className="bg-white rounded-[2.5rem] p-12 flex flex-col justify-center shadow-sm">
+              <p className="text-gray-900 text-lg font-medium mb-8 leading-snug">
+                 You can view more information about our hotel and all its details on our page.
+              </p>
+              <button className="px-8 py-3 border border-gray-300 rounded-full self-start hover:bg-gray-50 transition-colors text-sm font-medium">
+                 View more
+              </button>
+           </div>
+        </div>
+      </section>
+
+      {/* 3. TRIPS SECTION */}
+      <section className="bg-[#FFF5F5] pb-20 px-4 md:px-6">
+         <div className="max-w-7xl mx-auto bg-[#2B0F0F] rounded-[3rem] overflow-hidden flex flex-col md:flex-row text-white shadow-2xl">
+            {/* Left Content */}
+            <div className="md:w-1/2 p-12 md:p-20 flex flex-col justify-center relative">
+               <h3 className="text-3xl font-medium mb-8 text-center md:text-left">Team or private trips to<br/>the mountains</h3>
+               <p className="text-[11px] leading-relaxed opacity-70 max-w-md mb-12 text-center md:text-left">
+                  A trip to the mountains with the team is a great way to relax, build stronger connections, and create lasting memories. Shared hikes, snowy views, and cozy evenings by the fire bring everyone closer together.
+               </p>
+               
+               <div className="flex gap-4 justify-center md:justify-start">
+                  <button className="px-6 py-2 rounded-full border border-white/20 text-xs hover:bg-white/10 transition-colors">With team</button>
+                  <button className="px-6 py-2 rounded-full border border-white/20 text-xs hover:bg-white/10 transition-colors">Private</button>
+               </div>
+
+               {/* Button "View price" floating outside in the white area design match */}
+               <div className="absolute top-1/2 -left-64 hidden xl:block w-48 text-black">
+                   <p className="text-sm font-bold mb-4">You can book a trip on the website or at our hotel</p>
+                   <button className="px-6 py-2 border border-gray-300 rounded-full text-xs">View price</button>
+               </div>
             </div>
 
-          </div>
+            {/* Right Image */}
+            <div className="md:w-1/2 h-[500px] relative">
+               <img src="/akina-hiker.png" alt="Hiker" className="w-full h-full object-cover" />
+               <div className="absolute inset-0 bg-gradient-to-l from-transparent to-[#2B0F0F]/20"></div>
+            </div>
+         </div>
+      </section>
 
-          {/* Bottom Banner - Features */}
-          <div className="lg:col-span-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-             <div className="bg-zinc-950/50 border border-white/5 rounded-2xl p-6 flex items-center gap-4">
-                <div className="p-3 bg-[#FF4D00]/10 rounded-xl text-[#FF4D00]">
-                  <ShieldCheck size={24} />
-                </div>
-                <div>
-                  <h4 className="text-white font-bold">Secure Cargo</h4>
-                  <p className="text-zinc-500 text-sm">Insured & Protected</p>
-                </div>
-             </div>
-             <div className="bg-zinc-950/50 border border-white/5 rounded-2xl p-6 flex items-center gap-4">
-                <div className="p-3 bg-[#FF4D00]/10 rounded-xl text-[#FF4D00]">
-                  <Zap size={24} />
-                </div>
-                <div>
-                  <h4 className="text-white font-bold">Fast Delivery</h4>
-                  <p className="text-zinc-500 text-sm">Optimized Routes</p>
-                </div>
-             </div>
-             <div className="bg-zinc-950/50 border border-white/5 rounded-2xl p-6 flex items-center gap-4">
-                <div className="p-3 bg-[#FF4D00]/10 rounded-xl text-[#FF4D00]">
-                  <Globe size={24} />
-                </div>
-                <div>
-                  <h4 className="text-white font-bold">Global Network</h4>
-                  <p className="text-zinc-500 text-sm">International Reach</p>
-                </div>
-             </div>
-          </div>
-
-        </div>
-
-        {/* Keeping existing sections for now, could be restyled later or removed if user wants ONLY hero */}
-        {/* About Section */}
-        <div className="text-center mb-40" id="about">
-          <div className="inline-block p-8 rounded-2xl bg-zinc-900/50 backdrop-blur-md border border-white/5 max-w-4xl mx-auto">
-            <h2 className="font-serif text-3xl md:text-4xl text-white font-bold mb-8 uppercase tracking-widest">
-              The Journey
-            </h2>
-            <p className="text-lg md:text-xl text-gray-300 font-light leading-relaxed mb-6">
-              We travel through digital landscapes, creating immersive experiences that defy expectations. Join us as we navigate the vast expanse of creativity.
-            </p>
-          </div>
-        </div>
-
-        {/* Services Section */}
-        <div className="text-center mb-40" id="services">
-          <div className="inline-block p-8 rounded-2xl bg-zinc-900/50 backdrop-blur-md border border-white/5 max-w-4xl mx-auto">
-            <h2 className="font-serif text-3xl md:text-4xl text-white font-bold mb-8 uppercase tracking-widest">
-              Our Craft
-            </h2>
-            <p className="text-lg md:text-xl text-gray-300 font-light leading-relaxed mb-8">
-              Design. Development. Interaction. We build the future of the web.
-            </p>
-          </div>
-        </div>
-
-      </div>
-    </section>
+      {/* 4. CTA BOTTOM (Simplified as Spacer or just removed if no longer needed) */}
+      
+    </div>
   );
 }
