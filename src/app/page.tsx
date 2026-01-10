@@ -1,7 +1,9 @@
-import RefineLandingPage from '@/components/landing/RefineLandingPage';
+import ChipScroll from "@/components/ChipScroll";
 
 export default function Home() {
   return (
-    <RefineLandingPage />
+    <main>
+      <ChipScroll />
+    </main>
   );
 }

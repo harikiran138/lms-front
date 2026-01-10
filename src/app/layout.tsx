@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter, Playfair_Display, Oswald } from "next/font/google";
 import "./globals.css";
-import ThemeSwitcher from "@/components/ThemeSwitcher";
+
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" });
@@ -17,11 +17,18 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const fontClasses = [
+    inter.variable,
+    playfair.variable,
+    oswald.variable,
+    'font-sans'
+  ].join(' ');
+
   return (
-    <html lang="en">
-      <body className={`${inter.variable} ${playfair.variable} ${oswald.variable} font-sans`}>
+    <html lang="en" suppressHydrationWarning>
+      <body className={fontClasses} suppressHydrationWarning>
+
         {children}
-        <ThemeSwitcher />
       </body>
     </html>
   );

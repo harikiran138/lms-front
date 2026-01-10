@@ -8,10 +8,8 @@ export default function UnifiedContent() {
       
       {/* 1. HERO SECTION */}
       <section className="relative h-screen w-full p-4 md:p-6 flex items-center justify-center">
-        {/* Background Image Container */}
-        <div className="absolute inset-0 z-0">
-           <img src="/akina-hero.png" alt="Alps" className="w-full h-full object-cover" />
-        </div>
+        {/* Background Image Container Removed as per user request */}
+        <div className="absolute inset-0 z-0 bg-transparent" />
         
         {/* Glass Overlay Frame */}
         <div className="relative z-10 w-full h-full rounded-[3rem] border border-white/30 bg-white/5 backdrop-blur-sm flex flex-col justify-between p-8 md:p-12 overflow-hidden shadow-2xl">
@@ -57,12 +55,12 @@ export default function UnifiedContent() {
       </section>
 
       {/* 2. ABOUT US SECTION */}
-      <section className="bg-[#FFF5F5] py-20 px-4 md:px-6">
+      <section className="bg-transparent py-20 px-4 md:px-6">
         <h3 className="text-center text-black font-medium text-xl mb-12">About Us</h3>
         
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
            {/* Purple Card */}
-           <div className="bg-[#7B7BC4] rounded-[2.5rem] p-4 md:p-6 flex flex-col md:flex-row gap-6 items-center shadow-lg hover:shadow-xl transition-shadow duration-500">
+           <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-[2.5rem] p-4 md:p-6 flex flex-col md:flex-row gap-6 items-center shadow-lg hover:shadow-xl transition-all duration-500">
               <div className="w-full md:w-1/2 h-64 md:h-full rounded-[2rem] overflow-hidden">
                  <img src="/akina-about.png" alt="Grenoble" className="w-full h-full object-cover" />
               </div>
@@ -78,7 +76,7 @@ export default function UnifiedContent() {
            </div>
 
            {/* Right Info Block */}
-           <div className="bg-white rounded-[2.5rem] p-12 flex flex-col justify-center shadow-sm">
+           <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-[2.5rem] p-12 flex flex-col justify-center shadow-sm">
               <p className="text-gray-900 text-lg font-medium mb-8 leading-snug">
                  You can view more information about our hotel and all its details on our page.
               </p>
@@ -90,8 +88,8 @@ export default function UnifiedContent() {
       </section>
 
       {/* 3. TRIPS SECTION */}
-      <section className="bg-[#FFF5F5] pb-20 px-4 md:px-6">
-         <div className="max-w-7xl mx-auto bg-[#2B0F0F] rounded-[3rem] overflow-hidden flex flex-col md:flex-row text-white shadow-2xl">
+      <section className="bg-transparent pb-20 px-4 md:px-6">
+         <div className="max-w-7xl mx-auto bg-white/5 backdrop-blur-xl rounded-[3rem] overflow-hidden flex flex-col md:flex-row text-white shadow-2xl border border-white/10">
             {/* Left Content */}
             <div className="md:w-1/2 p-12 md:p-20 flex flex-col justify-center relative">
                <h3 className="text-3xl font-medium mb-8 text-center md:text-left">Team or private trips to<br/>the mountains</h3>
