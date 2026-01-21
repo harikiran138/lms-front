@@ -3,9 +3,7 @@
 import React, { useRef, useEffect, useState, useMemo } from 'react';
 import { useScroll, useTransform, motion, useSpring } from 'framer-motion';
 
-const FRAME_COUNT = 240;
-const CANVAS_WIDTH = 1920; // Assuming standard 1080p aspect ratio source or similar
-const CANVAS_HEIGHT = 1080;
+const FRAME_COUNT = 40;
 
 export default function ChipScroll() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -34,7 +32,7 @@ export default function ChipScroll() {
     imgArray.forEach((img, i) => {
         // Filename: ezgif-frame-001.jpg
         const frameNum = (i + 1).toString().padStart(3, '0');
-        img.src = `/sequence/ezgif-frame-${frameNum}.jpg`;
+        img.src = `/frames/ezgif-frame-${frameNum}.jpg`;
         img.onload = onIdxLoad;
         // Handle error?
         img.onerror = onIdxLoad; // prevent stuck loading
@@ -74,17 +72,6 @@ export default function ChipScroll() {
         const img = images[idx];
         if (!img) return;
 
-        // Draw 'contain' logic
-        // We want to fill the canvas or contain it? User said "Mobile scroll behavior... contain fit".
-        // The canvas itself is h-screen w-full.
-        // We should draw the image to cover or contain within the canvas dimensions.
-        // Since the canvas resolution is fixed (or responsive?), let's make internal resolution fixed and scale via CSS.
-        
-        // Actually, best practice for sharp text/images:
-        // Set canvas width/height to window innerWidth/Height * dpr.
-        // But for video frames, fixed aspect ratio is usually better to avoid distortion.
-        
-        // Let's rely on the internal sizing being high res, and CSS scaling it.
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
         
@@ -130,17 +117,17 @@ export default function ChipScroll() {
   // Loading Screen
   if (!imagesLoaded) {
       return (
-          <div className="h-screen w-full flex items-center justify-center bg-white text-black">
+          <div className="h-screen w-full flex items-center justify-center bg-slate-950 text-white">
               <div className="flex flex-col items-center gap-4">
-                  <div className="w-8 h-8 border-4 border-black/20 border-t-black rounded-full animate-spin" />
-                  <p className="text-sm tracking-widest uppercase">Initializing NeuralCore...</p>
+                  <div className="w-8 h-8 border-4 border-cyan-500/30 border-t-cyan-500 rounded-full animate-spin" />
+                  <p className="text-sm tracking-widest uppercase text-cyan-500">Initializing Drone Uplink...</p>
               </div>
           </div>
       );
   }
 
   return (
-    <div ref={containerRef} className="relative h-[400vh] bg-white">
+    <div ref={containerRef} className="relative h-[400vh] bg-slate-950">
       <div className="sticky top-0 left-0 w-full h-screen overflow-hidden">
         <canvas 
             ref={canvasRef}
@@ -149,47 +136,47 @@ export default function ChipScroll() {
         
         {/* Overlays */}
         <div className="absolute inset-0 pointer-events-none">
-            {/* Section 1: Title */}
+            {/* Section 1: Underwater Start */}
             <motion.div 
                 style={{ opacity: opacity1 }}
                 className="absolute inset-0 flex items-center justify-center"
             >
                 <div className="text-center">
-                    <h1 className="text-6xl md:text-8xl font-bold tracking-tighter text-black/90 mb-4">
-                        NeuralCore X1
+                    <h1 className="text-6xl md:text-8xl font-bold tracking-tighter text-white/90 mb-4 drop-shadow-2xl">
+                        Deep Dive <br /> Protocols
                     </h1>
-                    <p className="text-xl md:text-2xl text-black/60 font-light tracking-wide">
-                        The Future of AI.
+                    <p className="text-xl md:text-2xl text-cyan-400 font-light tracking-wide drop-shadow-lg">
+                        Autonomous Underwater Surveillance.
                     </p>
                 </div>
             </motion.div>
 
-            {/* Section 2: Parameters (Left) */}
+            {/* Section 2: Transition (Left) */}
             <motion.div 
                 style={{ opacity: opacity2 }}
                 className="absolute inset-0 flex items-center justify-start container mx-auto px-6 md:px-24"
             >
                  <div className="max-w-lg">
-                    <h2 className="text-4xl md:text-6xl font-bold text-black/90 mb-2">
-                        256 Billion <br/> Parameters.
+                    <h2 className="text-4xl md:text-6xl font-bold text-white/90 mb-2 drop-shadow-lg">
+                        Breaking the <br/> Surface.
                     </h2>
-                    <p className="text-lg text-black/60">
-                        Unmatched density. Infinite possibility.
+                    <p className="text-lg text-cyan-300/80 drop-shadow-md">
+                        Seamless amphibious transition capabilities.
                     </p>
                  </div>
             </motion.div>
 
-            {/* Section 3: Speed (Right) */}
+            {/* Section 3: Sky/Flight (Right) */}
             <motion.div 
                 style={{ opacity: opacity3 }}
                 className="absolute inset-0 flex items-center justify-end container mx-auto px-6 md:px-24"
             >
                  <div className="max-w-lg text-right">
-                    <h2 className="text-4xl md:text-6xl font-bold text-black/90 mb-2">
-                        Built for Speed. <br/> Designed for Scale.
+                    <h2 className="text-4xl md:text-6xl font-bold text-white/90 mb-2 drop-shadow-lg">
+                        Aerial <br/> Dominance.
                     </h2>
-                    <p className="text-lg text-black/60">
-                        Zero latency processing at the edge.
+                    <p className="text-lg text-cyan-300/80 drop-shadow-md">
+                        High-altitude reconnaissance from the deep.
                     </p>
                  </div>
             </motion.div>
@@ -200,11 +187,11 @@ export default function ChipScroll() {
                 className="absolute inset-0 flex items-center justify-center"
             >
                 <div className="text-center">
-                    <h2 className="text-5xl md:text-7xl font-bold tracking-tighter text-black/90 mb-8">
-                        Power Your Next <br/> Breakthrough.
+                    <h2 className="text-5xl md:text-7xl font-bold tracking-tighter text-white/90 mb-8 drop-shadow-2xl">
+                        One Vehicle. <br/> Two Worlds.
                     </h2>
-                    <button className="pointer-events-auto px-8 py-4 bg-black text-white font-bold tracking-wide rounded-full hover:bg-gray-800 transition-colors">
-                        ORDER DEVELOPER KIT
+                    <button className="pointer-events-auto px-8 py-4 bg-cyan-600 text-white font-bold tracking-wide rounded-full hover:bg-cyan-500 transition-colors shadow-lg shadow-cyan-900/50">
+                        EXPLORE SPECS
                     </button>
                 </div>
             </motion.div>
